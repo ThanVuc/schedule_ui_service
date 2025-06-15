@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
-import { Home } from "lucide-react";
+import { CircleAlert, Home } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 const ItemsSideBar = () => {
   const sidebar = [
     {
       Title: "Schedule Web",
-      Icon: Home,
+      Icon: CircleAlert,
       Items: [
         {
           title: "Abou Us",

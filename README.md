@@ -12,14 +12,18 @@
 │   │   ├── (main)/       # 📄 Các trang chính sau khi đăng nhập (dashboard, nội dung chính)
 │   │   └── test/         # 🧪 Trang hoặc module test/demo tạm thời
 │   ├── components/       # 🧱 Các component dùng lại (button, navbar, modal, ...)
+│   ├── middleware/       # 🧱 Các middleware để sử dụng
 │   ├── hooks/            # 🦡 Các custom React hooks (useAuth, useFetch, ...)
 │   ├── lib/              # 📚 Thư viện hỗ trợ (API client, hàm xử lý chung)
 │   ├── logs/             # 📝 Ghi log hệ thống, debug, hoặc xử lý lỗi
 │   └── utils/            # 🧐 Hàm tiện ích, helper function (format, validate, ...)
+├── env                   # Thư mục chứa các đường dẫn api
+│   └── type.ts           # File chứa kiểu dữ liệu của các data API
+│   └── authAPI.ts        # File mẫu về một file chứa đường dẫn API
 ├── .env                  # Biến môi trường
 ├── package.json          # Thông tin dependencies
 ├── next.config.js        # Cấu hình Next.js
-└── README.md             # 📘 Hướng dẫn sử dụng
+└── README.md             # 📘
 ```
 
 ```
@@ -27,7 +31,7 @@ Cơ chế tạo router (đường dẫn trang trong nextjs)
 * Tạo thư mục sẽ tự động có router mới với tên tương ứng, nhưng phải tạo file page.tsx thì router đó mới có hiệu lực
     Ví dụ: Tạo thư mục test/page.tsx => router sẽ là /test
 * Để có các layout riêng biệt (ví dụ muốn các trang auth không có sidebar và header như những phần khác) thì trong thư mục (auth) tạo thêm file layout.tsx và điều chỉnh các thành phần cần thiết (như gọi <Sidebar /> hoặc không)
-* Muốn tạo component riêng biệt cho từng trang khác nhau thì tạo trong thư mục _components/ trong thư mục tương ứng
+* Cách gọi API để sử dụng đã có viết mẫu trong services/authService.ts
 ---
 
 ---
@@ -104,6 +108,14 @@ Tách riêng giao diện khỏi logic.
 
 ---
 
+---
+
+## 🧱 `middleeware/`
+
+Chứa các middleware để sử dụng trong front-end 
+
+---
+
 ## 🦡 `hooks/`
 
 Các custom hook như:
@@ -118,6 +130,15 @@ Các custom hook như:
 
 * Ghi log debug, thông báo hệ thống
 * Hoặc chứa xử lý toast, alert
+
+---
+
+---
+
+## 📝 `env/`
+
+* Ghi các file chứa API cho từng service
+* Ghi các kiểu dữ liệu của API trong file type.ts
 
 ---
 
