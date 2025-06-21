@@ -6,36 +6,46 @@ import DetailedInformation from "./_components/detailedInformation";
 import PaginationComponent from "./_components/pagination";
 import SearchAndFilter from "./_components/SearchAndFilter";
 import DetailedLock from "./_components/detailedLock";
+import AssigRole from "./_components/assigRole";
 
 
 const ListUserPages = () => {
     const handleFilterChange = (value: string) => {
         console.log("Filter changed to:", value);
-        // Thêm logic lọc dữ liệu tại đây nếu cần
     };
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalLockOpen, setIsModalLockOpen] = useState(false)
-
-    const [selectedUser, setSelectedUser] = useState({
+    const [isModalAssigRoleOpen, setIsModalAssigRoleOpen] = useState(false)
+    const [selectedUser, setSelectedUser] = useState<{
+        id: string;
+        name: string;
+        date: string;
+        email: string;
+        role: string[]; // Sửa kiểu
+        gender: string;
+        status: boolean;
+        timestamp: string;
+        updatelast: string;
+        bio: string;
+    }>({
         id: "",
         name: "",
         date: "",
         email: "",
-        role: "",
+        role: [],
         gender: "",
         status: true,
         timestamp: "",
         updatelast: "",
         bio: "",
-
-    },); // Thêm state để lưu người dùng được chọn
+    }); // Thêm state để lưu người dùng được chọn
 
     const [listUser, setListUser] = useState([
         {
             id: "1",
             name: "người dùng1",
             email: "thaidaihuan@gmail.com",
-            role: "admin",
+            role: ["admin"],
             status: true,
             gender: "nam",
             timestamp: "2025-05-17 22:25:00",
@@ -48,7 +58,7 @@ const ListUserPages = () => {
             id: "2",
             name: "người dùng33",
             email: "thaidaihuan@gmail.com",
-            role: "admin",
+            role: [],
             status: true,
             gender: "nữ",
             timestamp: "2025-05-17 22:25:00",
@@ -61,7 +71,7 @@ const ListUserPages = () => {
             id: "3",
             name: "người dùng34",
             email: "thaidaihuan@gmail.com",
-            role: "admin",
+            role: ["admin", "user"],
             status: true,
             gender: "nam",
             timestamp: "2025-05-17 22:25:00",
@@ -73,7 +83,7 @@ const ListUserPages = () => {
             id: "4",
             name: "người dùng3",
             email: "thaidaihuan@gmail.com",
-            role: "admin",
+            role: ["user"],
             status: true,
             gender: "nữ",
             timestamp: "2025-05-17 22:25:00",
@@ -82,7 +92,7 @@ const ListUserPages = () => {
             bio: "tôi là ai",
         },
     ])
-    const adminCount = listUser.filter((user) => user.role === "admin").length;
+    const adminCount = listUser.filter((user) => user.role.some(role => role.toLowerCase() === "admin")).length;
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = Math.ceil(listUser.length / itemsPerPage);
@@ -93,11 +103,14 @@ const ListUserPages = () => {
     const handleLockUser = (id: string) => {
         setListUser((prev) =>
             prev.map((user) =>
-                user.id === id ? { ...user, status: false } : user
+                user.id === id ? { ...user, status: !user.status } : user
             )
         );
         setIsModalLockOpen(false);
     };
+    const handleAssigRoleUser = (id: string) => {
+
+    }
     return (
         <div className="mx-7 mt-7">
             <h1 className="text-2xl text-black font-bold">Danh Sách Người Dùng</h1>
@@ -111,7 +124,7 @@ const ListUserPages = () => {
             {/* list user */}
             <div className="mt-10 flex flex-col gap-3">
                 {currentUsers.map((user) => (
-                    <div>
+                    <div key={user.id}>
                         <CardItem
                             key={user.id}
                             onClick={() => {
@@ -123,16 +136,22 @@ const ListUserPages = () => {
                                 setIsModalLockOpen(true)
                                 setIsModalOpen(false);
                             }}
+                            onClickAssigRole={() => {
+                                setSelectedUser(user);
+                                setIsModalAssigRoleOpen(true)
+                                setIsModalOpen(false);
+                            }}
                             name={user.name}
                             email={user.email}
                             role={user.role}
                             status={user.status}
                             timestamp={user.timestamp}
+                            lock={!user.status}
+                            id={user.id}
                         />
                     </div>
                 ))}
             </div>
-
             {/* thông tin chi tiết người dùng */}
             {isModalOpen && selectedUser && (
                 <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
@@ -151,6 +170,7 @@ const ListUserPages = () => {
                     />
                 </div>
             )}
+            {/* khoá người dùng */}
             {isModalLockOpen && selectedUser && (
                 <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
                     <DetailedLock
@@ -158,9 +178,20 @@ const ListUserPages = () => {
                         onLock={handleLockUser}
                         id={selectedUser.id}
                         name={selectedUser.name}
+                        lock={!selectedUser.status}
                     />
                 </div>
             )}
+            {isModalAssigRoleOpen && selectedUser && (
+                <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
+                    <AssigRole
+                        onClose={() => setIsModalAssigRoleOpen(false)}
+                        onAssig={handleAssigRoleUser}
+                        id={selectedUser.id}
+                        name={selectedUser.name}
+
+                    />
+                </div>)}
             {/* phân trang */}
             <div className="mt-10 flex ml-6">
                 <div>

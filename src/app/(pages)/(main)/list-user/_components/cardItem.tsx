@@ -1,15 +1,18 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
-import { Crown, LockKeyhole, Shield } from "lucide-react";
+import { Crown, LockKeyhole, LockKeyholeOpen, Shield } from "lucide-react";
 
 interface CardItemProps {
+    id: string,
     name: string;
     email: string;
-    role: string;
+    role: string | string[],
     status: boolean;
     timestamp: string;
     onClick: () => void;
     onClickLock: () => void;
+    onClickAssigRole: () => void,
+    lock: boolean,
 }
 
 const formatTimeAgo = (timestamp: string) => {
@@ -25,14 +28,20 @@ const formatTimeAgo = (timestamp: string) => {
     return `${Math.floor(diff / 31104000)} năm trước`;
 };
 
-const CardItem = ({ name, email, role, status, timestamp, onClick, onClickLock }: CardItemProps) => {
+const CardItem = ({ id, name, email, role, status, timestamp, onClick, onClickLock, lock, onClickAssigRole }: CardItemProps) => {
     const getInitials = (name: string) => {
         const words = name.trim().split(" ");
         const first = words[0]?.[0] || "";
         const last = words.length > 1 ? words[words.length - 1]?.[0] : "";
         return (first + last).toUpperCase();
     };
-    const isAdmin = (r: string) => r.toLowerCase() === "admin";
+    const isAdmin = (role: string | string[] | null | undefined): boolean => {
+        if (!role) return false;
+        if (Array.isArray(role)) {
+            return role.some(r => typeof r === "string" && r.toLowerCase() === "admin");
+        }
+        return typeof role === "string" && role.toLowerCase() === "admin";
+    };
 
     const formatRole = (r: string) => {
         switch (r.toLowerCase()) {
@@ -44,7 +53,7 @@ const CardItem = ({ name, email, role, status, timestamp, onClick, onClickLock }
                 return r;
         }
     };
-    const randomColor = () => {
+    const getColorById = (id: string) => {
         const colors = [
             "bg-red-500",
             "bg-green-500",
@@ -57,11 +66,11 @@ const CardItem = ({ name, email, role, status, timestamp, onClick, onClickLock }
             "bg-lime-500",
             "bg-cyan-500",
         ];
-        const index = Math.floor(Math.random() * colors.length);
+        const index = parseInt(id) % colors.length; // Dùng id để chọn màu cố định
         return colors[index];
     };
 
-    const avatarBg = randomColor();
+    const avatarBg = getColorById(id); // Truyền user.id từ ListUserPages
 
 
 
@@ -78,7 +87,7 @@ const CardItem = ({ name, email, role, status, timestamp, onClick, onClickLock }
                         <div className=" flex items-center space-x-2">
                             <div className="rounded-xl text-[#3B82F6] bg-[#EBF8FF] font-medium text-xs px-1 flex items-center w-fit">
                                 {isAdmin(role) && <Crown size={12} className="fill-amber-400 text-amber-900" />}
-                                {formatRole(role)}
+                                {role.length > 0 ? formatRole(role?.[0]) : "không có vai trò"}
                             </div>
                             <div>
                                 <span className="text-xs text-gray-400">Hoạt động {formatTimeAgo(timestamp)}</span>
@@ -97,15 +106,17 @@ const CardItem = ({ name, email, role, status, timestamp, onClick, onClickLock }
                     >
                         {status ? "Hoạt Động" : "Bị Khóa"}
                     </span>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) =>
-                        e.stopPropagation()}>
+                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => {
+                        e.stopPropagation()
+                        onClickAssigRole();
+                    }}>
                         <Shield />
                     </button>
                     <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => {
                         e.stopPropagation();
                         onClickLock();
                     }}>
-                        <LockKeyhole />
+                        {lock ? <LockKeyhole /> : <LockKeyholeOpen />}
                     </button>
                 </div>
             </div>

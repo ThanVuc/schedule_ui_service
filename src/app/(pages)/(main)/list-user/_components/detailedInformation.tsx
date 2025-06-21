@@ -5,7 +5,7 @@ interface DetailedInformationProps {
     id: string,
     name: string;
     email: string;
-    role: string;
+    role: string[];
     status: boolean;
     date?: string;
     gender?: string;
@@ -68,6 +68,17 @@ const formatTimeAgo = (timestamp: string) => {
     if (diff < 31104000) return `${Math.floor(diff / 2592000)} tháng trước`;
     return `${Math.floor(diff / 31104000)} năm trước`;
 };
+// fomat role
+const formatRole = (r: string) => {
+    switch (r.toLowerCase()) {
+        case "admin":
+            return "Quản trị viên";
+        case "user":
+            return "Người dùng";
+        default:
+            return r;
+    }
+};
 
 const getInitials = (name: string) => {
     const words = name.trim().split(" ");
@@ -109,7 +120,7 @@ const DetailedInformation = ({ onClose, name, email, id, role, status, date, gen
                     </div>
                     <div className="flex justify-between p-3 border-b-1">
                         <p>🆔Vai trò:</p>
-                        <p> {role === "admin" ? "Quản trị viên" : "Người dùng"}</p>
+                        <p> {role.length > 0 ? role.map(formatRole).join(", ") : "không có vai trò"}</p>
                     </div>
                     <div className="flex justify-between p-3 border-b-1">
                         <p>🟢Trạng thái:</p>
