@@ -8,12 +8,13 @@ interface CardItemProps {
     role: string;
     status: boolean;
     timestamp: string;
+    onClick: () => void;
 }
 
 const formatTimeAgo = (timestamp: string): string => {
     const now = new Date();
     const time = new Date(timestamp);
-    const diff = (now.getTime() - time.getTime()) / 1000; // đơn vị: giây
+    const diff = (now.getTime() - time.getTime()) / 1000;
 
     if (diff < 60) return `${Math.floor(diff)} giây trước`;
     if (diff < 3600) return `${Math.floor(diff / 60)} phút trước`;
@@ -23,7 +24,7 @@ const formatTimeAgo = (timestamp: string): string => {
     return `${Math.floor(diff / 31104000)} năm trước`;
 };
 
-const CardItem = ({ name, email, role, status, timestamp }: CardItemProps) => {
+const CardItem = ({ name, email, role, status, timestamp, onClick }: CardItemProps) => {
     const getInitials = (name: string) => {
         const words = name.trim().split(" ");
         const first = words[0]?.[0] || "";
@@ -64,9 +65,9 @@ const CardItem = ({ name, email, role, status, timestamp }: CardItemProps) => {
 
 
     return (<div>
-        <Card className="">
-            <div className="flex justify-between px-2">
-                <div className="flex items-center">
+        <Card className="" onClick={onClick}>
+            <div className="flex justify-between px-2" >
+                <div className="flex items-center" >
                     <Avatar className={`p-5 ${avatarBg} text-white`}>
                         <AvatarFallback>{getInitials(name)}</AvatarFallback>
                     </Avatar>
@@ -75,7 +76,7 @@ const CardItem = ({ name, email, role, status, timestamp }: CardItemProps) => {
                         <h2 className="text-sm text-gray-500">{email}</h2>
                         <div className=" flex items-center space-x-2">
                             <div className="rounded-xl text-[#3B82F6] bg-[#EBF8FF] font-medium text-xs px-1 flex items-center w-fit">
-                                {isAdmin(role) && <Crown size={12} className="fill-amber-400 text-amber-900" />}  {/* 👑 */}
+                                {isAdmin(role) && <Crown size={12} className="fill-amber-400 text-amber-900" />}
                                 {formatRole(role)}
                             </div>
                             <div>
@@ -86,7 +87,7 @@ const CardItem = ({ name, email, role, status, timestamp }: CardItemProps) => {
                     </div>
 
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3" >
                     <span
                         className={`inline-flex items-center justify-center h-7
                             px-2 py-[1px] rounded-md text-xs font-medium leading-none border
@@ -96,10 +97,12 @@ const CardItem = ({ name, email, role, status, timestamp }: CardItemProps) => {
                     >
                         {status ? "Hoạt Động" : "Bị Khoá"}
                     </span>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]">
+                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => e.stopPropagation()}>
                         <Shield />
                     </button>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]"><LockKeyhole /></button>
+                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => e.stopPropagation()}>
+                        <LockKeyhole />
+                    </button>
                 </div>
             </div>
         </Card>
