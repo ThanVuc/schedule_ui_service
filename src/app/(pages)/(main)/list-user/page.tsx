@@ -5,7 +5,7 @@ import CardItem from "./_components/cardItem";
 import DetailedInformation from "./_components/detailedInformation";
 import PaginationComponent from "./_components/pagination";
 import SearchAndFilter from "./_components/SearchAndFilter";
-
+import DetailedLock from "./_components/detailedLock";
 
 
 const ListUserPages = () => {
@@ -14,6 +14,8 @@ const ListUserPages = () => {
         // Thêm logic lọc dữ liệu tại đây nếu cần
     };
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalLockOpen, setIsModalLockOpen] = useState(false)
+
     const [selectedUser, setSelectedUser] = useState({
         id: "",
         name: "",
@@ -27,7 +29,8 @@ const ListUserPages = () => {
         bio: "",
 
     },); // Thêm state để lưu người dùng được chọn
-    const [listUser, seListUser] = useState([
+
+    const [listUser, setListUser] = useState([
         {
             id: "1",
             name: "người dùng1",
@@ -37,7 +40,6 @@ const ListUserPages = () => {
             gender: "nam",
             timestamp: "2025-05-17 22:25:00",
             date: "2004-12-25",
-            Phone: "099999666",
             updatelast: "2025-04-17 22:25:00",
             bio: "tôi là ai",
 
@@ -51,7 +53,6 @@ const ListUserPages = () => {
             gender: "nữ",
             timestamp: "2025-05-17 22:25:00",
             date: "2004-12-25",
-            Phone: "099999666",
             updatelast: "2025-04-17 22:25:00",
             bio: "tôi là ai",
 
@@ -65,7 +66,6 @@ const ListUserPages = () => {
             gender: "nam",
             timestamp: "2025-05-17 22:25:00",
             date: "2004-12-25",
-            Phone: "099999666",
             updatelast: "2025-04-17 22:25:00",
             bio: "tôi là ai",
         },
@@ -78,7 +78,6 @@ const ListUserPages = () => {
             gender: "nữ",
             timestamp: "2025-05-17 22:25:00",
             date: "2004-12-25",
-            Phone: "099999666",
             updatelast: "2025-04-17 22:25:00",
             bio: "tôi là ai",
         },
@@ -91,11 +90,18 @@ const ListUserPages = () => {
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
-
+    const handleLockUser = (id: string) => {
+        setListUser((prev) =>
+            prev.map((user) =>
+                user.id === id ? { ...user, status: false } : user
+            )
+        );
+        setIsModalLockOpen(false);
+    };
     return (
         <div className="mx-7 mt-7">
             <h1 className="text-2xl text-black font-bold">Danh Sách Người Dùng</h1>
-            <h2 className="text-1 text-[#6B7280] mt-1">
+            <h2 className="text-sm text-[#6B7280] mt-1">
                 Xem và quản lý các tài khoản có vai trò quản trị hệ thống
             </h2>
             <div>
@@ -112,6 +118,11 @@ const ListUserPages = () => {
                                 setSelectedUser(user); // Lưu thông tin người dùng được chọn
                                 setIsModalOpen(true);
                             }}
+                            onClickLock={() => {
+                                setSelectedUser(user);
+                                setIsModalLockOpen(true)
+                                setIsModalOpen(false);
+                            }}
                             name={user.name}
                             email={user.email}
                             role={user.role}
@@ -124,7 +135,7 @@ const ListUserPages = () => {
 
             {/* thông tin chi tiết người dùng */}
             {isModalOpen && selectedUser && (
-                <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0">
+                <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
                     <DetailedInformation
                         onClose={() => setIsModalOpen(false)}
                         id={selectedUser.id}
@@ -137,6 +148,16 @@ const ListUserPages = () => {
                         timestamp={selectedUser.timestamp}
                         updatelast={selectedUser.updatelast}
                         bio={selectedUser.bio}
+                    />
+                </div>
+            )}
+            {isModalLockOpen && selectedUser && (
+                <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
+                    <DetailedLock
+                        onClose={() => setIsModalLockOpen(false)}
+                        onLock={handleLockUser}
+                        id={selectedUser.id}
+                        name={selectedUser.name}
                     />
                 </div>
             )}

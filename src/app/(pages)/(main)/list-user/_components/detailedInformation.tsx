@@ -75,11 +75,11 @@ const getInitials = (name: string) => {
     const last = words.length > 1 ? words[words.length - 1]?.[0] : "";
     return (first + last).toUpperCase();
 };
-
+const avatarBg = randomColor(); // Tạo màu ngẫu nhiên mỗi khi render
 const DetailedInformation = ({ onClose, name, email, id, role, status, date, gender, timestamp, updatelast, bio }: DetailedInformationProps) => {
-    const avatarBg = randomColor(); // Tạo màu ngẫu nhiên mỗi khi render
+
     return (
-        <div className="bg-white w-[600px] h-[700px] border-2 border-[#bababa] relative shadow-lg rounded-lg overflow-y-auto">
+        <div className="bg-white w-full max-w-[600px] h-full max-h-[700px] border-2 border-[#bababa] relative shadow-lg rounded-lg overflow-y-auto">
             <button
                 className="absolute top-1 right-1 text-[#ff0000] p-2 hover:bg-gray-100 rounded-full"
                 onClick={onClose}
@@ -89,43 +89,43 @@ const DetailedInformation = ({ onClose, name, email, id, role, status, date, gen
             <div className=" flex flex-col items-center p-6 h-full">
                 <h1 className="text-xl font-bold mb-4">Thông tin chi tiết</h1>
                 <div className="flex flex-col items-center mb-3 ">
-                    <Avatar className={`p-8 ${avatarBg} text-white drop-shadow-xl/25 border-[#E5E7EB] border-1`}>
+                    <Avatar className={`p-8 ${avatarBg} text-white drop-shadow-xl/25 border-[#E5E7EB] border`}>
                         <AvatarFallback>{getInitials(name)}</AvatarFallback>
                     </Avatar>
                     <p className="text-center font-bold"> {name}</p>
                 </div>
-                <div className="space-y-4 text-sm w-120">
+                <div className="space-y-4 text-sm w-[480px]">
                     <div className="flex justify-center">
                         <p className="capitalize p-1 bg-[#F1F5F9] rounded-xl">{gender}-{getAge(date || "")} tuổi</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1 border-[]">
-                        <p>Ngày sinh:</p>
+                    <div className="flex justify-between p-3 border-b-1">
+                        <p>🎂 Ngày sinh:</p>
                         <p>{formatDate(date || "")}</p>
                     </div>
 
-                    <div className="flex justify-between p-3 border-b-1 border-[]">
-                        <p>Email:</p>
+                    <div className="flex justify-between p-3 border-b-1">
+                        <p>📧Email:</p>
                         <p>{email}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1 border-[]">
-                        <p>Vai trò:</p>
+                    <div className="flex justify-between p-3 border-b-1">
+                        <p>🆔Vai trò:</p>
                         <p> {role === "admin" ? "Quản trị viên" : "Người dùng"}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1 border-[]">
-                        <p>Trạng thái:</p>
+                    <div className="flex justify-between p-3 border-b-1">
+                        <p>🟢Trạng thái:</p>
                         <p> {status ? "Hoạt động" : "bị khoá"}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1 border-[]">
-                        <p>thời gian đăng nhập:</p>
+                    <div className="flex justify-between p-3 border-b-1">
+                        <p>🕐Thời gian đăng nhập:</p>
                         <p> {formatTimeAgo(timestamp || "")}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1 border-[]">
-                        <p>thời gian cập nhật lần cuối:</p>
+                    <div className="flex justify-between p-3 border-b-1">
+                        <p>🕐Thời gian cập nhật lần cuối:</p>
                         <p> {formatTimeAgo(updatelast || "")}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1 border-[]">
-                        <p>Bio:</p>
-                        <p>{bio}</p>
+                    <div className="flex justify-between p-3 border-b-1">
+                        <p>📖Mô tả</p>
+                        <p>{bio || "Chưa có tiểu sử"}</p>
                     </div>
                 </div>
             </div>

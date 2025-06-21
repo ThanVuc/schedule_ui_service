@@ -9,9 +9,10 @@ interface CardItemProps {
     status: boolean;
     timestamp: string;
     onClick: () => void;
+    onClickLock: () => void;
 }
 
-const formatTimeAgo = (timestamp: string): string => {
+const formatTimeAgo = (timestamp: string) => {
     const now = new Date();
     const time = new Date(timestamp);
     const diff = (now.getTime() - time.getTime()) / 1000;
@@ -24,7 +25,7 @@ const formatTimeAgo = (timestamp: string): string => {
     return `${Math.floor(diff / 31104000)} năm trước`;
 };
 
-const CardItem = ({ name, email, role, status, timestamp, onClick }: CardItemProps) => {
+const CardItem = ({ name, email, role, status, timestamp, onClick, onClickLock }: CardItemProps) => {
     const getInitials = (name: string) => {
         const words = name.trim().split(" ");
         const first = words[0]?.[0] || "";
@@ -89,18 +90,21 @@ const CardItem = ({ name, email, role, status, timestamp, onClick }: CardItemPro
                 </div>
                 <div className="flex items-center space-x-3" >
                     <span
-                        className={`inline-flex items-center justify-center h-7
-                            px-2 py-[1px] rounded-md text-xs font-medium leading-none border
-                            ${status
-                                ? "bg-[#D1FAE5] text-[#065F46] border-[#10B981]"
-                                : "bg-[#FEE2E2] text-[#991B1B] border-[#EF4444]"}`}
+                        className={`flex items-center justify-center h-fit px-2 py-1 rounded-md text-xs font-medium border ${status
+                            ? "bg-[#D1FAE5] text-[#065F46] border-[#10B981]"
+                            : "bg-[#FEE2E2] text-[#991B1B] border-[#EF4444]"
+                            }`}
                     >
-                        {status ? "Hoạt Động" : "Bị Khoá"}
+                        {status ? "Hoạt Động" : "Bị Khóa"}
                     </span>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => e.stopPropagation()}>
+                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) =>
+                        e.stopPropagation()}>
                         <Shield />
                     </button>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => e.stopPropagation()}>
+                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => {
+                        e.stopPropagation();
+                        onClickLock();
+                    }}>
                         <LockKeyhole />
                     </button>
                 </div>
