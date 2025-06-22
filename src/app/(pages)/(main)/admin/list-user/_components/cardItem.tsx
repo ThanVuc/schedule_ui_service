@@ -1,18 +1,13 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Crown, LockKeyhole, LockKeyholeOpen, Shield } from "lucide-react";
+import { IFCardItem } from "../../../../../model/carditem";
 
 interface CardItemProps {
-    id: string,
-    name: string;
-    email: string;
-    role: string | string[],
-    status: boolean;
-    timestamp: string;
+    userCardItem: IFCardItem;
     onClick: () => void;
     onClickLock: () => void;
     onClickAssigRole: () => void,
-    lock: boolean,
 }
 
 const formatTimeAgo = (timestamp: string) => {
@@ -28,7 +23,7 @@ const formatTimeAgo = (timestamp: string) => {
     return `${Math.floor(diff / 31104000)} năm trước`;
 };
 
-const CardItem = ({ id, name, email, role, status, timestamp, onClick, onClickLock, lock, onClickAssigRole }: CardItemProps) => {
+const CardItem = ({ userCardItem, onClick, onClickLock, onClickAssigRole }: CardItemProps) => {
     const getInitials = (name: string) => {
         const words = name.trim().split(" ");
         const first = words[0]?.[0] || "";
@@ -70,7 +65,7 @@ const CardItem = ({ id, name, email, role, status, timestamp, onClick, onClickLo
         return colors[index];
     };
 
-    const avatarBg = getColorById(id); // Truyền user.id từ ListUserPages
+    const avatarBg = getColorById(userCardItem.id); // Truyền user.id từ ListUserPages
 
 
 
@@ -79,18 +74,18 @@ const CardItem = ({ id, name, email, role, status, timestamp, onClick, onClickLo
             <div className="flex justify-between px-2" >
                 <div className="flex items-center" >
                     <Avatar className={`p-5 ${avatarBg} text-white`}>
-                        <AvatarFallback>{getInitials(name)}</AvatarFallback>
+                        <AvatarFallback>{getInitials(userCardItem.name)}</AvatarFallback>
                     </Avatar>
                     <div className="ml-4">
-                        <h1>{name}</h1>
-                        <h2 className="text-sm text-gray-500">{email}</h2>
+                        <h1>{userCardItem.name}</h1>
+                        <h2 className="text-sm text-gray-500">{userCardItem.email}</h2>
                         <div className=" flex items-center space-x-2">
                             <div className="rounded-xl text-[#3B82F6] bg-[#EBF8FF] font-medium text-xs px-1 flex items-center w-fit">
-                                {isAdmin(role) && <Crown size={12} className="fill-amber-400 text-amber-900" />}
-                                {role.length > 0 ? formatRole(role?.[0]) : "không có vai trò"}
+                                {isAdmin(userCardItem.role) && <Crown size={12} className="fill-amber-400 text-amber-900" />}
+                                {userCardItem.role.length > 0 ? formatRole(userCardItem.role?.[0]) : "không có vai trò"}
                             </div>
                             <div>
-                                <span className="text-xs text-gray-400">Hoạt động {formatTimeAgo(timestamp)}</span>
+                                <span className="text-xs text-gray-400">Hoạt động {formatTimeAgo(userCardItem.timestamp)}</span>
 
                             </div>
                         </div>
@@ -99,12 +94,12 @@ const CardItem = ({ id, name, email, role, status, timestamp, onClick, onClickLo
                 </div>
                 <div className="flex items-center space-x-3" >
                     <span
-                        className={`flex items-center justify-center h-fit px-2 py-1 rounded-md text-xs font-medium border ${status
+                        className={`flex items-center justify-center h-fit px-2 py-1 rounded-md text-xs font-medium border ${userCardItem.status
                             ? "bg-[#D1FAE5] text-[#065F46] border-[#10B981]"
                             : "bg-[#FEE2E2] text-[#991B1B] border-[#EF4444]"
                             }`}
                     >
-                        {status ? "Hoạt Động" : "Bị Khóa"}
+                        {userCardItem.status ? "Hoạt Động" : "Bị Khóa"}
                     </span>
                     <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => {
                         e.stopPropagation()
@@ -116,7 +111,7 @@ const CardItem = ({ id, name, email, role, status, timestamp, onClick, onClickLo
                         e.stopPropagation();
                         onClickLock();
                     }}>
-                        {lock ? <LockKeyhole /> : <LockKeyholeOpen />}
+                        {userCardItem.lock ? <LockKeyhole /> : <LockKeyholeOpen />}
                     </button>
                 </div>
             </div>

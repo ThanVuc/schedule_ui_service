@@ -1,18 +1,9 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { X } from "lucide-react";
+import { IFUser } from "../../../../../model/user";
 
 interface DetailedInformationProps {
-    id: string,
-    name: string;
-    email: string;
-    role: string[];
-    status: boolean;
-    date?: string;
-    gender?: string;
-    timestamp?: string;
-    updatelast?: string;
-    bio: string;
-
+    userDetailedInfo: IFUser,
     onClose: () => void;
 }
 
@@ -87,7 +78,7 @@ const getInitials = (name: string) => {
     return (first + last).toUpperCase();
 };
 const avatarBg = randomColor(); // Tạo màu ngẫu nhiên mỗi khi render
-const DetailedInformation = ({ onClose, name, email, id, role, status, date, gender, timestamp, updatelast, bio }: DetailedInformationProps) => {
+const DetailedInformation = ({ userDetailedInfo, onClose }: DetailedInformationProps) => {
 
     return (
         <div className="bg-white w-full max-w-[600px] h-full max-h-[700px] border-2 border-[#bababa] relative shadow-lg rounded-lg overflow-y-auto">
@@ -101,42 +92,42 @@ const DetailedInformation = ({ onClose, name, email, id, role, status, date, gen
                 <h1 className="text-xl font-bold mb-4">Thông tin chi tiết</h1>
                 <div className="flex flex-col items-center mb-3 ">
                     <Avatar className={`p-8 ${avatarBg} text-white drop-shadow-xl/25 border-[#E5E7EB] border`}>
-                        <AvatarFallback>{getInitials(name)}</AvatarFallback>
+                        <AvatarFallback>{getInitials(userDetailedInfo.name)}</AvatarFallback>
                     </Avatar>
-                    <p className="text-center font-bold"> {name}</p>
+                    <p className="text-center font-bold"> {userDetailedInfo.name}</p>
                 </div>
                 <div className="space-y-4 text-sm w-[480px]">
                     <div className="flex justify-center">
-                        <p className="capitalize p-1 bg-[#F1F5F9] rounded-xl">{gender}-{getAge(date || "")} tuổi</p>
+                        <p className="capitalize p-1 bg-[#F1F5F9] rounded-xl">{userDetailedInfo.gender}-{getAge(userDetailedInfo.date || "")} tuổi</p>
                     </div>
                     <div className="flex justify-between p-3 border-b-1">
                         <p>🎂 Ngày sinh:</p>
-                        <p>{formatDate(date || "")}</p>
+                        <p>{formatDate(userDetailedInfo.date || "")}</p>
                     </div>
 
                     <div className="flex justify-between p-3 border-b-1">
-                        <p>📧Email:</p>
-                        <p>{email}</p>
+                        <p>📧 Email:</p>
+                        <p>{userDetailedInfo.email}</p>
                     </div>
                     <div className="flex justify-between p-3 border-b-1">
-                        <p>🆔Vai trò:</p>
-                        <p> {role.length > 0 ? role.map(formatRole).join(", ") : "không có vai trò"}</p>
+                        <p>🆔 Vai trò:</p>
+                        <p> {userDetailedInfo.role.length > 0 ? userDetailedInfo.role.map(formatRole).join(", ") : "Không có vai trò"}</p>
                     </div>
                     <div className="flex justify-between p-3 border-b-1">
-                        <p>🟢Trạng thái:</p>
-                        <p> {status ? "Hoạt động" : "bị khoá"}</p>
+                        <p>🟢 Trạng thái:</p>
+                        <p> {userDetailedInfo.status ? "Hoạt động" : "bị khoá"}</p>
                     </div>
                     <div className="flex justify-between p-3 border-b-1">
-                        <p>🕐Thời gian đăng nhập:</p>
-                        <p> {formatTimeAgo(timestamp || "")}</p>
+                        <p>🕐 Thời gian đăng nhập:</p>
+                        <p> {formatTimeAgo(userDetailedInfo.timestamp || "")}</p>
                     </div>
                     <div className="flex justify-between p-3 border-b-1">
-                        <p>🕐Thời gian cập nhật lần cuối:</p>
-                        <p> {formatTimeAgo(updatelast || "")}</p>
+                        <p>🕐 Thời gian cập nhật lần cuối:</p>
+                        <p> {formatTimeAgo(userDetailedInfo.updatelast || "")}</p>
                     </div>
                     <div className="flex justify-between p-3 border-b-1">
-                        <p>📖Mô tả</p>
-                        <p>{bio || "Chưa có tiểu sử"}</p>
+                        <p>📖 Mô tả</p>
+                        <p>{userDetailedInfo.bio || "Chưa có tiểu sử"}</p>
                     </div>
                 </div>
             </div>

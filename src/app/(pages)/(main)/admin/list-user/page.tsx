@@ -7,6 +7,7 @@ import PaginationComponent from "./_components/pagination";
 import SearchAndFilter from "./_components/SearchAndFilter";
 import DetailedLock from "./_components/detailedLock";
 import AssigRole from "./_components/assigRole";
+import { IFUser } from "../../../../model/user";
 
 
 const ListUserPages = () => {
@@ -16,18 +17,7 @@ const ListUserPages = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalLockOpen, setIsModalLockOpen] = useState(false)
     const [isModalAssigRoleOpen, setIsModalAssigRoleOpen] = useState(false)
-    const [selectedUser, setSelectedUser] = useState<{
-        id: string;
-        name: string;
-        date: string;
-        email: string;
-        role: string[]; // Sửa kiểu
-        gender: string;
-        status: boolean;
-        timestamp: string;
-        updatelast: string;
-        bio: string;
-    }>({
+    const [selectedUser, setSelectedUser] = useState<IFUser>({
         id: "",
         name: "",
         date: "",
@@ -91,6 +81,7 @@ const ListUserPages = () => {
             updatelast: "2025-04-17 22:25:00",
             bio: "tôi là ai",
         },
+
     ])
     const adminCount = listUser.filter((user) => user.role.some(role => role.toLowerCase() === "admin")).length;
     const itemsPerPage = 6;
@@ -141,13 +132,15 @@ const ListUserPages = () => {
                                 setIsModalAssigRoleOpen(true)
                                 setIsModalOpen(false);
                             }}
-                            name={user.name}
-                            email={user.email}
-                            role={user.role}
-                            status={user.status}
-                            timestamp={user.timestamp}
-                            lock={!user.status}
-                            id={user.id}
+                            userCardItem={{
+                                id: user.id,
+                                name: user.name,
+                                email: user.email,
+                                role: user.role,
+                                status: user.status,
+                                timestamp: user.timestamp,
+                                lock: !user.status
+                            }}
                         />
                     </div>
                 ))}
@@ -157,16 +150,18 @@ const ListUserPages = () => {
                 <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
                     <DetailedInformation
                         onClose={() => setIsModalOpen(false)}
-                        id={selectedUser.id}
-                        name={selectedUser.name}
-                        date={selectedUser.date}
-                        email={selectedUser.email}
-                        gender={selectedUser.gender}
-                        role={selectedUser.role}
-                        status={selectedUser.status}
-                        timestamp={selectedUser.timestamp}
-                        updatelast={selectedUser.updatelast}
-                        bio={selectedUser.bio}
+                        userDetailedInfo={{
+                            id: selectedUser.id,
+                            name: selectedUser.name,
+                            date: selectedUser.date,
+                            email: selectedUser.email,
+                            gender: selectedUser.gender,
+                            role: selectedUser.role,
+                            status: selectedUser.status,
+                            timestamp: selectedUser.timestamp,
+                            updatelast: selectedUser.updatelast,
+                            bio: selectedUser.bio,
+                        }}
                     />
                 </div>
             )}
@@ -176,9 +171,11 @@ const ListUserPages = () => {
                     <DetailedLock
                         onClose={() => setIsModalLockOpen(false)}
                         onLock={handleLockUser}
-                        id={selectedUser.id}
-                        name={selectedUser.name}
-                        lock={!selectedUser.status}
+                        userDetailedLock={{
+                            id: selectedUser.id,
+                            name: selectedUser.name,
+                            lock: !selectedUser.status
+                        }}
                     />
                 </div>
             )}
@@ -187,8 +184,10 @@ const ListUserPages = () => {
                     <AssigRole
                         onClose={() => setIsModalAssigRoleOpen(false)}
                         onAssig={handleAssigRoleUser}
-                        id={selectedUser.id}
-                        name={selectedUser.name}
+                        userAssigRole={{
+                            id: selectedUser.id,
+                            name: selectedUser.name
+                        }}
 
                     />
                 </div>)}
