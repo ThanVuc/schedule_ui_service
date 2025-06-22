@@ -1,0 +1,59 @@
+// components/ReusableModal.tsx
+import React from "react";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "../../../../../components/ui/dialog";
+import { Button } from "../../../../../components/ui/button";
+
+type Props = {
+  title: string;
+  description?: string;
+  children?: React.ReactNode;
+  trigger: React.ReactNode;
+  onSubmit?: () => void;
+  submitText?: string;
+  cancelText?: string;
+};
+
+export default function ReusableModal({
+  title,
+  description,
+  children,
+  trigger,
+  onSubmit,
+  submitText = "Xác nhận",
+  cancelText = "Hủy",
+  
+}: Props) {
+  return (
+    <Dialog >
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      <DialogContent className="sm:max-w-[700px]">
+        <DialogHeader>
+          <DialogTitle>
+            <div className="text-center text-3xl "> <h1> {title}</h1></div> 
+           
+            
+            </DialogTitle>
+          {description && <DialogDescription>{description}</DialogDescription>}
+        </DialogHeader>
+        <div className="py-4">{children}</div>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">{cancelText}</Button>
+          </DialogClose>
+          {onSubmit && (
+            <Button onClick={onSubmit}>{submitText}</Button>
+          )}
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}

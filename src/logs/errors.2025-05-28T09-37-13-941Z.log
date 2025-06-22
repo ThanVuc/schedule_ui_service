@@ -11,3 +11,44 @@ ID: 05eaaebc-f4ca-48ba-a342-5738e807f8c4 | Time: 2025-06-13T07:55:29.037Z | Name
 ID: b0589cee-f963-4483-a0bb-e5a88f69be14 | Time: 2025-06-13T07:56:06.320Z | Name: Error | Cause: Lỗi test!
 ID: 47634d7d-d54a-4aa3-a4c8-edb528922826 | Time: 2025-06-13T07:56:07.283Z | Name: Error | Cause: Lỗi test!
 ID: 7ca6817d-aa6e-434c-99fc-3f861e18ac2c | Time: 2025-06-13T07:56:08.207Z | Name: Error | Cause: Lỗi test!
+ID: 7223949f-e51c-41e8-a728-cd364f07b788 | Time: 2025-06-18T15:00:31.096Z | Name: ReferenceError | Cause: fl is not defined
+ID: a1a94511-7afd-44a1-9f45-549038d001c1 | Time: 2025-06-20T18:12:47.522Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `ClientPageRoot`.
+ID: a6a57ab7-ee73-451e-91e8-50512a4cff32 | Time: 2025-06-21T06:41:27.382Z | Name: ReferenceError | Cause: searchQuery is not defined
+ID: 932a6f91-2a78-43ea-b0c8-05e6044128d8 | Time: 2025-06-21T09:15:58.815Z | Name: ReferenceError | Cause: Dialog is not defined
+ID: b1614e14-d53f-4f63-917b-45025d3ccea9 | Time: 2025-06-21T09:53:14.363Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
+ID: 78fdc14b-3d0a-4bc3-81cc-0cbe4c94efa5 | Time: 2025-06-21T10:30:31.144Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleItem`.
+ID: 873ac3ea-20c0-41ea-a895-69115b86d965 | Time: 2025-06-21T10:30:51.827Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'name')
+ID: 55ecf241-2123-447d-acac-246cd7a65745 | Time: 2025-06-21T10:30:57.584Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'name')
+ID: 6eb54652-b13b-472d-873e-6e250e603038 | Time: 2025-06-21T10:32:03.218Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'name')
+ID: 8d191bff-0ca2-4d1b-b7b0-d3540ba8682e | Time: 2025-06-21T10:32:16.240Z | Name: ReferenceError | Cause: role is not defined
+ID: 71814f50-3360-4394-8411-5bdec9f9874f | Time: 2025-06-21T10:32:18.690Z | Name: ReferenceError | Cause: role is not defined
+ID: 98aedbf0-9cb5-4d21-98e4-146602247826 | Time: 2025-06-21T10:32:20.687Z | Name: ReferenceError | Cause: role is not defined
+ID: 5696e520-a646-4390-803c-d1721abab761 | Time: 2025-06-21T10:42:06.645Z | Name: ReferenceError | Cause: div is not defined
+ID: d8b8bb7c-664f-4acd-9a2e-8b5349382106 | Time: 2025-06-21T10:49:11.235Z | Name: ReferenceError | Cause: i is not defined
+ID: 04a0cade-bca1-4c0f-a27c-10d5e3a6b6e3 | Time: 2025-06-21T10:51:07.462Z | Name: ReferenceError | Cause: EditRoleModal is not defined
+ID: 32a4341b-0c11-47ea-b803-21ad5ee5204d | Time: 2025-06-21T11:13:53.139Z | Name: ReferenceError | Cause: DeleteRoleModal is not defined
+ID: 1ba936b4-e091-4f49-b501-e13b7593904d | Time: 2025-06-21T11:14:03.565Z | Name: ReferenceError | Cause: DeleteRoleModaldal is not defined
+ID: 646bd3ed-7e56-4ae1-bb14-ddcc58ff29e5 | Time: 2025-06-21T11:14:05.852Z | Name: ReferenceError | Cause: DeleteRoleModaldal is not defined
+ID: 9f5ba67d-3d2f-443f-bb8d-af7726f5edff | Time: 2025-06-21T11:14:16.877Z | Name: ReferenceError | Cause: DeleteRoleModaldal is not defined
+ID: fbc5e812-609a-4c4b-9ab0-b3cbd6ffb3d6 | Time: 2025-06-21T11:14:24.866Z | Name: ReferenceError | Cause: im is not defined
+ID: 7acd0752-9c99-405d-8e9a-4b76c6245dff | Time: 2025-06-21T11:14:43.794Z | Name: ReferenceError | Cause: DeleteRoleModaldal is not defined
+ID: 4c6be365-bfc7-4ea5-90b4-9ccf36077784 | Time: 2025-06-21T11:15:04.067Z | Name: ReferenceError | Cause: role is not defined
+ID: f4512dcd-6265-4ad2-94c6-a2a7ff166b1a | Time: 2025-06-21T11:15:04.375Z | Name: ReferenceError | Cause: role is not defined
+ID: 3bbf6c58-8729-46e5-b309-2ce41fd59fa8 | Time: 2025-06-21T11:15:07.275Z | Name: ReferenceError | Cause: role is not defined
+ID: f82335f8-45a2-425c-862f-0e4953348f82 | Time: 2025-06-21T11:15:14.191Z | Name: ReferenceError | Cause: role is not defined
+ID: 4ab07cc2-daea-4f23-bfff-013abf26b653 | Time: 2025-06-21T11:18:03.745Z | Name: ReferenceError | Cause: role is not defined
+ID: 00f35d4c-016b-43dd-9e60-ef3cc5ff57f2 | Time: 2025-06-21T11:20:06.898Z | Name: ReferenceError | Cause: Eye is not defined
+ID: 04f59757-4393-4280-a4a6-3df4b2472e74 | Time: 2025-06-21T11:20:23.753Z | Name: ReferenceError | Cause: Eye is not defined
+ID: 83eab2c8-2df6-4632-8fba-4311b83c165e | Time: 2025-06-21T11:20:36.675Z | Name: ReferenceError | Cause: Eye is not defined
+ID: d3de0f6d-f61e-4f7b-992a-c3b4d2a75442 | Time: 2025-06-21T14:17:03.598Z | Name: ReferenceError | Cause: OTPInput is not defined
+ID: 47a263ee-fdbb-493c-bcbe-3b7afb6e2fd5 | Time: 2025-06-22T01:35:30.277Z | Name: ReferenceError | Cause: anh is not defined
+ID: 7cd9a35d-cdcd-4e3b-86a0-cb68eae5ef37 | Time: 2025-06-22T01:44:29.735Z | Name: ReferenceError | Cause: Image is not defined
+ID: 99807bd6-39f7-418a-b179-cfce0d015f69 | Time: 2025-06-22T02:03:35.702Z | Name: ReferenceError | Cause: SideBar is not defined
+ID: 6c7b048b-a3b3-4946-b68f-437a530b9353 | Time: 2025-06-22T02:03:39.735Z | Name: ReferenceError | Cause: Header is not defined
+ID: a08d02ef-9c7d-4759-92c5-53ea51bf9da7 | Time: 2025-06-22T03:24:43.095Z | Name: ReferenceError | Cause: key is not defined
