@@ -8,12 +8,15 @@ import SearchAndFilter from "./_components/SearchAndFilter";
 import DetailedLock from "./_components/detailedLock";
 import AssigRole from "./_components/assigRole";
 import { IFUser } from "../../../../model/user";
+import { Noti } from "@/app/model/notification";
+import Notification from "./_components/notification";
 
 
 const ListUserPages = () => {
     const handleFilterChange = (value: string) => {
         console.log("Filter changed to:", value);
     };
+    const [notification, setNotification] = useState<Noti | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalLockOpen, setIsModalLockOpen] = useState(false)
     const [isModalAssigRoleOpen, setIsModalAssigRoleOpen] = useState(false)
@@ -28,7 +31,7 @@ const ListUserPages = () => {
         timestamp: "",
         updatelast: "",
         bio: "",
-    }); // Thêm state để lưu người dùng được chọn
+    });
 
     const [listUser, setListUser] = useState([
         {
@@ -81,14 +84,13 @@ const ListUserPages = () => {
             updatelast: "2025-04-17 22:25:00",
             bio: "tôi là ai",
         },
-
     ])
     const adminCount = listUser.filter((user) => user.role.some(role => role.toLowerCase() === "admin")).length;
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = Math.ceil(listUser.length / itemsPerPage);
-    const currentUsers = listUser.slice(
-        (currentPage - 1) * itemsPerPage,
+    const totalPages = Math.ceil(listUser.length / itemsPerPage); // tính tổng số trang dựa trên số lượng người dùng và số mục trên mỗi trang
+    const currentUsers = listUser.slice( // lấy danh sách người dùng hiện tại
+        (currentPage - 1) * itemsPerPage, // bắt đầu từ trang hiện tại
         currentPage * itemsPerPage
     );
     const handleLockUser = (id: string) => {
@@ -104,6 +106,7 @@ const ListUserPages = () => {
     }
     return (
         <div className="mx-7 mt-7">
+            {notification?.isVisible && (<Notification onClose={() => setNotification(null)} noti={notification} />)}
             <h1 className="text-2xl text-black font-bold">Danh Sách Người Dùng</h1>
             <h2 className="text-sm text-[#6B7280] mt-1">
                 Xem và quản lý các tài khoản có vai trò quản trị hệ thống
@@ -176,6 +179,10 @@ const ListUserPages = () => {
                             name: selectedUser.name,
                             lock: !selectedUser.status
                         }}
+                        setNotification={(noti) => {
+                            setNotification(noti);
+                        }}
+
                     />
                 </div>
             )}
@@ -186,11 +193,15 @@ const ListUserPages = () => {
                         onAssig={handleAssigRoleUser}
                         userAssigRole={{
                             id: selectedUser.id,
-                            name: selectedUser.name
+                            name: selectedUser.name,
+                            role: selectedUser.role
                         }}
 
                     />
                 </div>)}
+            <div>
+
+            </div>
             {/* phân trang */}
             <div className="mt-10 flex ml-6">
                 <div>

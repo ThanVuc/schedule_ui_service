@@ -69,3 +69,53 @@ ID: 617a98e6-8a81-4a83-9867-43dcc5e5be45 | Time: 2025-06-22T03:49:45.889Z | Name
 ID: 598a6b38-d7e5-4881-9cb1-324217d0e8d1 | Time: 2025-06-22T03:49:53.621Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'id')
 ID: ebc02ab1-a2cd-4b5b-a079-e614b30dbd43 | Time: 2025-06-22T03:51:04.070Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'id')
 ID: 42cecbb3-177f-4581-ac00-3c5e70a7c458 | Time: 2025-06-22T03:51:25.381Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'id')
+ID: d6d6b15e-3919-40d9-a40a-bea5d1859417 | Time: 2025-06-22T09:28:43.603Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `ListUserPages`.
+ID: 01ab4ac0-27ed-41a9-8740-941ea44d9779 | Time: 2025-06-22T09:39:32.542Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'name')
+ID: 7321af72-8ea8-479b-bb0b-54e622135db0 | Time: 2025-06-22T09:44:04.195Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'role')
+ID: 8061b357-cb70-4e40-a215-174306752113 | Time: 2025-06-22T09:44:06.423Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'role')
+ID: 0ee373a2-dadc-4d02-b1f4-c27072edc580 | Time: 2025-06-22T10:14:31.452Z | Name: ReferenceError | Cause: FormatRole is not defined
+ID: f368adb9-2776-415b-8381-0b16d3833e64 | Time: 2025-06-22T14:25:30.081Z | Name: Error | Cause: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ID: 8e858e31-2788-4ba6-9f97-110359e66e23 | Time: 2025-06-22T14:25:38.044Z | Name: Error | Cause: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ID: 4efa921f-7626-4db0-91a4-fa4899a30267 | Time: 2025-06-22T14:25:38.185Z | Name: Error | Cause: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ID: 6997dde0-a3ee-4a6a-959e-c86bc8fa02d9 | Time: 2025-06-23T01:44:23.684Z | Name: Error | Cause: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ID: 9a670cc2-0448-4fa7-a9cf-2cf62c4d76d3 | Time: 2025-06-23T07:24:34.263Z | Name: Error | Cause: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ID: d203a56f-295b-47c6-b831-5baa9faab65f | Time: 2025-06-23T07:24:43.849Z | Name: Error | Cause: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ID: 8a90bce1-ad34-4837-9ede-c94164c34910 | Time: 2025-06-23T07:25:26.205Z | Name: Error | Cause: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ID: 8c3b07db-5510-429d-b1f7-a7b4eb7ce7c5 | Time: 2025-06-23T07:44:22.932Z | Name: Error | Cause: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ID: 1f5d918f-6d6a-4f75-a717-d0c194f06630 | Time: 2025-06-23T08:18:44.433Z | Name: TypeError | Cause: Failed to construct 'Notification': Please use the 'new' operator, this DOM object constructor cannot be called as a function.
+ID: dde852ea-df0b-4fba-982f-d03ca221ee17 | Time: 2025-06-23T08:29:10.576Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'duration')
+ID: df600f3c-a7c8-4d22-b066-33b3edfcd871 | Time: 2025-06-23T16:15:53.317Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'toLowerCase')
