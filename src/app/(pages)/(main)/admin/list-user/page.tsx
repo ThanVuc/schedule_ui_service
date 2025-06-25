@@ -1,21 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import CardItem from "./_components/cardItem";
-import DetailedInformation from "./_components/detailedInformation";
 import PaginationComponent from "./_components/pagination";
 import SearchAndFilter from "./_components/SearchAndFilter";
-import DetailedLock from "./_components/detailedLock";
-import AssigRole from "./_components/assigRole";
 import { IFUser } from "../../../../model/user";
 import { Noti } from "@/app/model/notification";
-import Notification from "./_components/notification";
+import ListUser from "./_optimize/listuser";
+import DetailedInformationOptimize from "./_optimize/DetailedInformationOptimize";
+import DetailedLockOptimize from "./_optimize/DetailedLockoptimize";
+import AssigRoleOptimize from "./_optimize/AssigRoleOptimize";
+import AdminCountOptimize from "./_optimize/Admincountoptimaze";
+import NotificationOptimize from "./_optimize/NotificationOptimaze";
+import TextOptimize from "./_optimize/TextOptimaze";
 
 
 const ListUserPages = () => {
-    const handleFilterChange = (value: string) => {
-        console.log("Filter changed to:", value);
-    };
     const [notification, setNotification] = useState<Noti | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalLockOpen, setIsModalLockOpen] = useState(false)
@@ -85,134 +84,64 @@ const ListUserPages = () => {
             bio: "tôi là ai",
         },
     ])
-    const adminCount = listUser.filter((user) => user.role.some(role => role.toLowerCase() === "admin")).length;
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = Math.ceil(listUser.length / itemsPerPage); // tính tổng số trang dựa trên số lượng người dùng và số mục trên mỗi trang
     const currentUsers = listUser.slice( // lấy danh sách người dùng hiện tại
         (currentPage - 1) * itemsPerPage, // bắt đầu từ trang hiện tại
         currentPage * itemsPerPage
     );
-    const handleLockUser = (id: string) => {
-        setListUser((prev) =>
-            prev.map((user) =>
-                user.id === id ? { ...user, status: !user.status } : user
-            )
-        );
-        setIsModalLockOpen(false);
-    };
-    const handleAssigRoleUser = (id: string) => {
-
-    }
     return (
         <div className="mx-7 mt-7">
-            {notification?.isVisible && (<Notification onClose={() => setNotification(null)} noti={notification} />)}
-            <h1 className="text-2xl text-black font-bold">Danh Sách Người Dùng</h1>
-            <h2 className="text-sm text-[#6B7280] mt-1">
-                Xem và quản lý các tài khoản có vai trò quản trị hệ thống
-            </h2>
+            <NotificationOptimize notification={notification} setNotification={setNotification} />
+            <TextOptimize />
             <div>
-                <SearchAndFilter onFilterChange={handleFilterChange} />
+                <SearchAndFilter />
             </div>
 
             {/* list user */}
-            <div className="mt-10 flex flex-col gap-3">
-                {currentUsers.map((user) => (
-                    <div key={user.id}>
-                        <CardItem
-                            key={user.id}
-                            onClick={() => {
-                                setSelectedUser(user); // Lưu thông tin người dùng được chọn
-                                setIsModalOpen(true);
-                            }}
-                            onClickLock={() => {
-                                setSelectedUser(user);
-                                setIsModalLockOpen(true)
-                                setIsModalOpen(false);
-                            }}
-                            onClickAssigRole={() => {
-                                setSelectedUser(user);
-                                setIsModalAssigRoleOpen(true)
-                                setIsModalOpen(false);
-                            }}
-                            userCardItem={{
-                                id: user.id,
-                                name: user.name,
-                                email: user.email,
-                                role: user.role,
-                                status: user.status,
-                                timestamp: user.timestamp,
-                                lock: !user.status
-                            }}
-                        />
-                    </div>
-                ))}
-            </div>
-            {/* thông tin chi tiết người dùng */}
+            <ListUser currentUsers={currentUsers}
+                setSelectedUser={setSelectedUser}
+                setIsModalOpen={setIsModalOpen}
+                setIsModalLockOpen={setIsModalLockOpen}
+                setIsModalAssigRoleOpen={setIsModalAssigRoleOpen}
+            />
+            {/* thông tin người dùng */}
             {isModalOpen && selectedUser && (
-                <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
-                    <DetailedInformation
-                        onClose={() => setIsModalOpen(false)}
-                        userDetailedInfo={{
-                            id: selectedUser.id,
-                            name: selectedUser.name,
-                            date: selectedUser.date,
-                            email: selectedUser.email,
-                            gender: selectedUser.gender,
-                            role: selectedUser.role,
-                            status: selectedUser.status,
-                            timestamp: selectedUser.timestamp,
-                            updatelast: selectedUser.updatelast,
-                            bio: selectedUser.bio,
-                        }}
-                    />
-                </div>
+                <DetailedInformationOptimize
+                    setIsModalOpen={setIsModalOpen}
+                    selectedUser={selectedUser}
+                />
             )}
             {/* khoá người dùng */}
             {isModalLockOpen && selectedUser && (
-                <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
-                    <DetailedLock
-                        onClose={() => setIsModalLockOpen(false)}
-                        onLock={handleLockUser}
-                        userDetailedLock={{
-                            id: selectedUser.id,
-                            name: selectedUser.name,
-                            lock: !selectedUser.status
-                        }}
-                        setNotification={(noti) => {
-                            setNotification(noti);
-                        }}
-
-                    />
-                </div>
+                <DetailedLockOptimize
+                    setListUser={setListUser}
+                    setIsModalLockOpen={setIsModalLockOpen}
+                    selectedUser={selectedUser}
+                    setNotification={setNotification}
+                />
             )}
+            {/* phân quyền người dùng */}
             {isModalAssigRoleOpen && selectedUser && (
-                <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
-                    <AssigRole
-                        onClose={() => setIsModalAssigRoleOpen(false)}
-                        onAssig={handleAssigRoleUser}
-                        userAssigRole={{
-                            id: selectedUser.id,
-                            name: selectedUser.name,
-                            role: selectedUser.role
-                        }}
-
-                    />
-                </div>)}
-            <div>
-
-            </div>
+                <AssigRoleOptimize
+                    setIsModalAssigRoleOpen={setIsModalAssigRoleOpen}
+                    selectedUser={selectedUser}
+                    setNotification={setNotification}
+                />
+            )}
             {/* phân trang */}
             <div className="mt-10 flex ml-6">
                 <div>
                     <PaginationComponent
+                        listUser={listUser}
                         currentPage={currentPage}
-                        totalPages={totalPages}
                         onPageChange={setCurrentPage}
                     />
                 </div>
             </div>
-            <span className="text-[#2A70D2]">Tổng cộng: {adminCount} quản trị viên</span>
+            <AdminCountOptimize
+                listUser={listUser}
+            />
         </div>
     );
 };

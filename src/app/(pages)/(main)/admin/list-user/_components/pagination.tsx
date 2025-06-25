@@ -1,3 +1,4 @@
+import { IFUser } from "@/app/model/user";
 import {
     Pagination,
     PaginationContent,
@@ -11,11 +12,12 @@ import { ChevronsLeft, ChevronsRight } from "lucide-react";
 
 interface PaginationComponentProps {
     currentPage: number;
-    totalPages: number;
+    listUser: IFUser[];
     onPageChange: (page: number) => void;
 }
-
-const PaginationComponent = ({ currentPage, totalPages, onPageChange }: PaginationComponentProps) => {
+const itemsPerPage = 6;
+const PaginationComponent = ({ currentPage, onPageChange, listUser }: PaginationComponentProps) => {
+    const totalPages = Math.ceil(listUser.length / itemsPerPage);
     const getPageNumbers = (current: number, total: number, maxVisible: number = 5) => {
         const half = Math.floor(maxVisible / 2);
         let start = Math.max(1, current - half);

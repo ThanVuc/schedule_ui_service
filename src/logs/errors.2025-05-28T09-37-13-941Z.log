@@ -119,3 +119,9 @@ See https://react.dev/link/invalid-hook-call for tips about how to debug and fix
 ID: 1f5d918f-6d6a-4f75-a717-d0c194f06630 | Time: 2025-06-23T08:18:44.433Z | Name: TypeError | Cause: Failed to construct 'Notification': Please use the 'new' operator, this DOM object constructor cannot be called as a function.
 ID: dde852ea-df0b-4fba-982f-d03ca221ee17 | Time: 2025-06-23T08:29:10.576Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'duration')
 ID: df600f3c-a7c8-4d22-b066-33b3edfcd871 | Time: 2025-06-23T16:15:53.317Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'toLowerCase')
+ID: 26ace5d1-cbac-484f-9e18-f54a08095dde | Time: 2025-06-25T10:56:14.770Z | Name: ReferenceError | Cause: listUser is not defined
+ID: de7895dd-5f50-4eb3-b9eb-14d27c0b1cef | Time: 2025-06-25T10:56:19.988Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'length')
+ID: 8044636a-1e85-4713-891d-f2c51720f243 | Time: 2025-06-25T11:01:40.328Z | Name: ReferenceError | Cause: listUser is not defined
+ID: 8d61962c-99f9-4397-9512-93c0e577d625 | Time: 2025-06-25T11:01:47.179Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'filter')
+ID: b50b6d87-a7de-4073-9d56-72bb221f64a5 | Time: 2025-06-25T11:02:05.281Z | Name: ReferenceError | Cause: listUser is not defined
+ID: 1f4c86fb-14b4-44b1-93ae-022ceb67c7c5 | Time: 2025-06-25T11:02:12.118Z | Name: TypeError | Cause: Cannot read properties of undefined (reading 'filter')

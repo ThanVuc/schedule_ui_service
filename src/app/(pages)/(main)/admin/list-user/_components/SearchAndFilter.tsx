@@ -6,11 +6,10 @@ import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import { Command, CommandGroup, CommandItem } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
 
-interface SearchAndFilterProps {
-    onFilterChange: (value: string) => void; // Hàm callback khi giá trị filter thay đổi
-}
-
-const SearchAndFilter = ({ onFilterChange }: SearchAndFilterProps) => {
+const handleFilterChange = (value: string) => {
+    console.log("Filter changed to:", value);
+};
+const SearchAndFilter = () => {
     const itemComboBox = [
         { value: "1", label: "Tất cả trạng thái" },
         { value: "2", label: "Quản trị viên" },
@@ -45,7 +44,7 @@ const SearchAndFilter = ({ onFilterChange }: SearchAndFilterProps) => {
                                     value={item.value}
                                     onSelect={(currentValue) => {
                                         setValue(currentValue === value ? "" : currentValue);
-                                        onFilterChange(currentValue === value ? "" : currentValue); // Gọi callback khi chọn filter
+                                        handleFilterChange(currentValue === value ? "" : currentValue); // Gọi callback khi chọn filter
                                         setOpen(false);
                                     }}
                                 >
