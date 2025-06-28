@@ -9,8 +9,8 @@ import {
   DialogDescription,
   DialogFooter,
   DialogClose,
-} from "../../../../../components/ui/dialog";
-import { Button } from "../../../../../components/ui/button";
+} from "../../../../../../components/ui/dialog";
+import { Button } from "../../../../../../components/ui/button";
 
 type Props = {
   title: string;

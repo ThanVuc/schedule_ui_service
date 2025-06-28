@@ -1,0 +1,21 @@
+ID: fd09f154-e824-48f6-bb26-cb774540df1e | Time: 2025-06-24T13:05:56.306Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
+ID: 94c72383-8309-412b-93c6-a364891e21cb | Time: 2025-06-24T13:05:56.305Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
+ID: bacf4ad0-3587-456a-ba60-67dc674727d9 | Time: 2025-06-25T15:22:42.881Z | Name: TypeError | Cause: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.
+ID: 5283116a-417e-4871-930c-9405dcc19552 | Time: 2025-06-25T15:22:46.575Z | Name: ReferenceError | Cause: Ima is not defined
+ID: 6de168e9-d19c-4a9d-b5ca-3fa239491abc | Time: 2025-06-26T10:27:50.567Z | Name: ReferenceError | Cause: a is not defined
+ID: a69ef59d-4afb-4654-b8e8-f86b993566a4 | Time: 2025-06-26T10:28:00.945Z | Name: ReferenceError | Cause: a is not defined
+ID: b92e667d-14a6-43ab-a189-0da7ff591397 | Time: 2025-06-26T10:28:07.823Z | Name: ReferenceError | Cause: ava is not defined
+ID: fb823b28-6bdc-4cd5-a61a-c05e13b9fd01 | Time: 2025-06-26T13:41:54.896Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
+ID: 15bb0e44-fd2d-4c92-a90a-ae43723e1af3 | Time: 2025-06-26T13:49:30.248Z | Name: ReferenceError | Cause: statuses is not defined
+ID: d0b0caff-3b43-45c6-ada1-e9f6418e5dc3 | Time: 2025-06-26T13:49:37.365Z | Name: ReferenceError | Cause: statuses is not defined
+ID: 2d51b69e-c0f3-45f6-b1b7-eed08f4d68f5 | Time: 2025-06-26T13:49:48.077Z | Name: ReferenceError | Cause: statuses is not defined
+ID: 76635f31-12da-43cc-b0ed-051d5c8a8546 | Time: 2025-06-26T13:49:58.174Z | Name: ReferenceError | Cause: statuses is not defined
+ID: 05d698e9-9493-448d-9194-9d498d12a756 | Time: 2025-06-26T13:54:26.789Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
