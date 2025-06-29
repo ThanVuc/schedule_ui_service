@@ -7,9 +7,16 @@ import {
 } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Bell, ChevronDown, User, LogOut, Search, User2 } from "lucide-react";
+import { Bell, ChevronDown, LogOut, Search, User2 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  faPenToSquare,
+  faLock,
+  faUser
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface HeaderProps {
   userName: string;
@@ -17,7 +24,14 @@ interface HeaderProps {
   logoUrl?: string;
   siteName?: string;
   avatarUrl?: string;
+
 }
+const endpoints = "/personal-account"
+const menuItems = [
+  { href: `${endpoints}/personal-info`, icon: faUser, label: "Thông tin cá nhân" },
+  { href: `${endpoints}/edit-profile`, icon: faPenToSquare, label: "Chỉnh sửa thông tin" },
+  { href: `${endpoints}/reset-pass`, icon: faLock, label: "Đặt lại mật khẩu" },
+];
 
 const menus = [
   {
@@ -47,7 +61,7 @@ const menus = [
 export default function Header({
   userName,
   siteName = "Tên Website",
-  logoUrl ,
+  logoUrl,
   avatarUrl,
 }: HeaderProps) {
   const handleLogout = () => {
@@ -59,6 +73,9 @@ export default function Header({
   const [hovered, setHovered] = useState<string | null>(null);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isUserMenuLocked, setIsUserMenuLocked] = useState(false);
+  const pathname = usePathname();
+  const isAdminPage = pathname.includes("/admin");
+
 
   return (
     <header className="h-16 w-full flex items-center justify-between bg-gray-50 border-b border-gray-200 px-6 shadow-sm">
@@ -75,39 +92,45 @@ export default function Header({
       </Link>
 
       {/* Menu */}
-      <nav className="flex items-center gap-6">
-        {menus.map((menu) => (
-          <Popover key={menu.title} open={hovered === menu.title}>
-            <PopoverTrigger
-              onMouseEnter={() => setHovered(menu.title)}
-              onMouseLeave={() => setHovered(null)}
-              className="flex items-center gap-1 font-medium text-gray-800"
-            >
-              {menu.title}
-              <ChevronDown className="w-4 h-4" />
-            </PopoverTrigger>
-            <PopoverContent
-              onMouseEnter={() => setHovered(menu.title)}
-              onMouseLeave={() => setHovered(null)}
-              className={`w-44 p-0 ${dropdownAnimation}`}
-              align="start"
-            >
-              <ul className="text-sm">
-                {menu.items.map((item) => (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </PopoverContent>
-          </Popover>
-        ))}
-      </nav>
+      {
+        !isAdminPage && <div>
+          {
+            <nav className="flex items-center gap-6">
+              {menus.map((menu) => (
+                <Popover key={menu.title} open={hovered === menu.title}>
+                  <PopoverTrigger
+                    onMouseEnter={() => setHovered(menu.title)}
+                    onMouseLeave={() => setHovered(null)}
+                    className="flex items-center gap-1 font-medium text-gray-800"
+                  >
+                    {menu.title}
+                    <ChevronDown className="w-4 h-4" />
+                  </PopoverTrigger>
+                  <PopoverContent
+                    onMouseEnter={() => setHovered(menu.title)}
+                    onMouseLeave={() => setHovered(null)}
+                    className={`w-44 p-0 ${dropdownAnimation}`}
+                    align="start"
+                  >
+                    <ul className="text-sm">
+                      {menu.items.map((item) => (
+                        <li key={item.href}>
+                          <a
+                            href={item.href}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </PopoverContent>
+                </Popover>
+              ))}
+            </nav>
+          }
+        </div>
+      }
 
       {/* Right Section */}
       <div className="flex items-center gap-4">
@@ -184,14 +207,18 @@ export default function Header({
             align="end"
           >
             <ul className="text-sm">
-              <li>
-                <a
-                  href="/profile"
-                  className="flex items-center gap-2 rounded px-3 py-2 hover:bg-gray-100"
-                >
-                  <User className="w-4 h-4 mr-2" /> Thông tin cá nhân
-                </a>
-              </li>
+
+              {menuItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="flex items-center gap-2 rounded px-3 py-2 hover:bg-gray-100"
+                  >
+                    <FontAwesomeIcon icon={item.icon} className="w-4 h-4 mr-2" />
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <button
                   onClick={handleLogout}
