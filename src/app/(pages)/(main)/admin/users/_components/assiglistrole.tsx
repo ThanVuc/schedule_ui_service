@@ -1,8 +1,8 @@
-import { IFAssigListRole } from "@/app/model/assiglistrole";
 import { Checkbox } from "@/components/ui/checkbox";
 import { FormatRole } from "@/utils/formatRole";
+import { AssigListRoleModel } from "../model/assiglistrole";
 interface AssigListRoleProps {
-    IFuser: IFAssigListRole;
+    IFuser: AssigListRoleModel;
     checked?: boolean;
     onToggle?: () => void;
 }

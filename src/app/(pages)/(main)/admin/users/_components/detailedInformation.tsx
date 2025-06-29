@@ -1,9 +1,9 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { X } from "lucide-react";
-import { IFUser } from "../../../../../model/user";
+import { UserModel } from "../model/user";
 
 interface DetailedInformationProps {
-    userDetailedInfo: IFUser,
+    userDetailedInfo: UserModel,
     onClose: () => void;
 }
 

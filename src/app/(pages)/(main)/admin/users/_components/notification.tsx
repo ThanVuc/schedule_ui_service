@@ -1,10 +1,10 @@
-import { Noti } from "@/app/model/notification";
 import { cn } from "@/lib/utils";
 import { CircleCheck } from "lucide-react";
 import { useEffect, useState } from "react";
+import { NotificationModel } from "../model/notification";
 
 interface NotificationProps {
-    noti: Noti;
+    noti: NotificationModel;
     onClose: () => void;
 }
 

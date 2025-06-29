@@ -1,8 +1,8 @@
-import { IFUser } from "@/app/model/user";
 import CardItem from "../_components/cardItem";
+import { UserModel } from "../model/user";
 interface ListUserProps {
-    currentUsers: IFUser[];
-    setSelectedUser: (user: IFUser) => void;
+    currentUsers: UserModel[];
+    setSelectedUser: (user: UserModel) => void;
     setIsModalOpen: (isOpen: boolean) => void;
     setIsModalLockOpen: (isOpen: boolean) => void;
     setIsModalAssigRoleOpen: (isOpen: boolean) => void;
