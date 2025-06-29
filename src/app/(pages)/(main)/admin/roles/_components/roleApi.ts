@@ -50,10 +50,20 @@ const api = axios.create({
   baseURL: "/api", // thay đổi nếu cần
 });
 
-export const fetchPermissions = (search?: string, filter?: string) => {
-  const params: Record<string, string> = {};
+// export const fetchPermissions = (search?: string, filter?: string) => {
+//   const params: Record<string, string> = {};
+//   if (search) params.search = search;
+//   if (filter) params.filter = filter;
+//   return api.get("/permissions", { params });
+// };
+
+export const fetchPermissions = (search?: string, page = 1, limit = 5) => {
+  const params: Record<string, string> = {
+    page: page.toString(),
+    limit: limit.toString(),
+  };
   if (search) params.search = search;
-  if (filter) params.filter = filter;
+  
   return api.get("/permissions", { params });
 };
 

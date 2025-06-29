@@ -250,7 +250,8 @@ import React, { useState, useEffect } from "react";
 import RoleItem from "./_components/role";
 import CustomPagination from "./_components/pagination";
 import CreateRoleModal from "./_components/createRoleModal";
-import { fetchPermissions } from "./_components/roleApi";
+// import { fetchPermissions } from "./_components/roleApi";
+import { mockRoles } from "./_components/mockRoles";
 
 export default function RolesList() {
   const itemsPerPage = 5;
@@ -260,15 +261,40 @@ export default function RolesList() {
   const [gotoPage, setGotoPage] = useState("");
   const [error, setError] = useState("");
   const [rolesData, setRolesData] = useState<{ id: number; name: string }[]>([]);
+  // const [totalPages, setTotalPages] = useState(1);
 
-  const fetchData = async () => {
-    try {
-      const res = await fetchPermissions(searchQuery);
-      setRolesData(res.data);
-    } catch (error) {
-      console.error("Lỗi khi lấy danh sách quyền:", error);
-    }
-  };
+
+  // const fetchData = async () => {
+  //   try {
+  //     const res = await fetchPermissions(searchQuery);
+  //     setRolesData(res.data);
+  //   } catch (error) {
+  //     console.error("Lỗi khi lấy danh sách quyền:", error);
+  //   }
+  // };
+
+//   const fetchData = async () => {
+//   try {
+//     const res = await fetchPermissions(searchQuery, currentPage, itemsPerPage);
+//     setRolesData(res.data); // res.data.data
+//     setTotalPages(res.data.pagination.totalPages); // <- thêm state
+//     // hoặc setTotalItems nếu bạn muốn tính từ đó
+//   } catch (error) {
+//     console.error("Lỗi khi lấy danh sách quyền:", error);
+//   }
+// };
+
+const fetchData = async () => {
+  try {
+    // Thay thế gọi API bằng dữ liệu mẫu
+    const filtered = mockRoles.filter((role) =>
+      role.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setRolesData(filtered);
+  } catch (error) {
+    console.error("Lỗi khi lấy danh sách quyền:", error);
+  }
+};
 
   useEffect(() => {
     fetchData();
