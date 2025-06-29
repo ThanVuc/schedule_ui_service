@@ -1,0 +1,26 @@
+// ./_components/mockRoles.ts
+export const mockRoles = [
+  { id: 1, name: "Quản trị hệ thống" },
+  { id: 2, name: "Người dùng tiêu chuẩn" },
+  { id: 3, name: "Quản lý nội dung" },
+  { id: 4, name: "Biên tập viên" },
+  { id: 5, name: "Nhân viên hỗ trợ" },
+  { id: 6, name: "Quản lý bán hàng" },
+  { id: 7, name: "Nhân viên kinh doanh" },
+  { id: 8, name: "Khách vãng lai" },
+  { id: 9, name: "Kiểm toán viên" },
+  { id: 10, name: "Quản trị viên dự án" },
+  { id: 11, name: "Người dùng API" },
+  { id: 12, name: "Quản lý tài chính" },
+  { id: 13, name: "Quản lý nhân sự" },
+  { id: 14, name: "Người tạo báo cáo" },
+  { id: 15, name: "Người phê duyệt" },
+  { id: 16, name: "Khách vãng lai" },
+  { id: 17, name: "Kiểm toán viên" },
+  { id: 18, name: "Quản trị viên dự án" },
+  { id: 19, name: "Người dùng API" },
+  { id: 20, name: "Quản lý tài chính" },
+  { id: 21, name: "Quản lý nhân sự" },
+  { id: 22, name: "Người tạo báo cáo" },
+  { id: 23, name: "Người phê duyệt" }
+];

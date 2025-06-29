@@ -6,7 +6,7 @@ export default function page() {
             <div className=' absolute flex m-auto rounded-3xl  shadow-2xl max-w-4xl bg-white w-400 h-110'>
 
                 {/* Right Side */}
-                <div className="w-116 absolute z-2 rounded-3xl bg-cyan-100 p-10 pt-5 ">
+                <div className="w-116 absolute z-2 rounded-3xl bg-cyan-100 p-10 pt-5  pr-15">
                     <h2 className="text-3xl font-bold text-center ">Sign up</h2>
 
                     <div className="mb-4">
@@ -79,9 +79,13 @@ export default function page() {
 
 
                 {/* Left Side */}
-                <div className='absolute top-[-20px] left-[450px] z-10 h-120 bg-green-600 rounded-3xl  w-115 flex items-center justify-center p-10'>
-                    <img src="" alt="" />
-                    <p>ảnh ở đây </p>
+                {/* <div className='absolute top-[-20px] left-[450px] z-10 h-120 bg-green-600 rounded-3xl  w-115 flex items-center justify-center p-10'> */}
+                <div className='absolute top-[-70px] left-[400px]   z-10 w-[560px] h-[580px] rounded-3xl flex items-center justify-center p-10'>
+                     <img
+                        src="./image8.png"
+                        alt="Login Illustration"
+                        className="w-full h-full object-cover rounded-3xl"
+                    />
                 </div>
 
 
