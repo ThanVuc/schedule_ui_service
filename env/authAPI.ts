@@ -1,3 +1,5 @@
+
+
 const base = process.env.NEXT_PUBLIC_API_AUTH;
 
 const authAPI = {
@@ -6,6 +8,7 @@ const authAPI = {
   register: `${base}/register`,
   refresh: `${base}/refresh`,
   verify: `${base}/verify`,
+ 
 };
 
 export default authAPI;
