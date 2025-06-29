@@ -19,3 +19,27 @@ ID: 754854be-adfb-4353-bb1f-cecb8558bcb2 | Time: 2025-06-21T13:49:19.556Z | Name
 
 Check the render method of `ResetPasswordPage`.
 ID: 9164e42b-1fbf-4548-b33a-8bafe4a7b078 | Time: 2025-06-22T03:21:23.065Z | Name: ReferenceError | Cause: chi is not defined
+ID: 70c6459a-6d14-4ec3-9bd5-d0d11682297f | Time: 2025-06-28T11:07:11.414Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `AddRolePage`.
+ID: b826bb3d-5601-484f-b8e3-e1efe5b7876d | Time: 2025-06-28T12:06:34.975Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `AddRolePage`.
+ID: 4be1ec15-eace-4b83-b013-4b386364a780 | Time: 2025-06-28T15:42:58.823Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleListUI`.
+ID: ae1dd8a5-8903-4a39-86de-528e779ffb1d | Time: 2025-06-28T15:48:24.676Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleListUI`.
+ID: 8fe6cd69-208c-49cf-981f-ede235b05635 | Time: 2025-06-28T15:55:06.943Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleListUI`.
+ID: b76050b3-e0d9-4db1-b29c-c4ddef6748d6 | Time: 2025-06-28T16:15:44.824Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleListUI`.
+ID: a917efe7-c853-410b-a558-961d05edaac3 | Time: 2025-06-28T16:35:03.415Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleListUI`.
+ID: ce9de5b9-54fa-4c42-9ee0-cf76af528005 | Time: 2025-06-28T16:37:33.661Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleListUI`.
