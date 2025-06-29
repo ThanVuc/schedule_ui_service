@@ -52,6 +52,7 @@ const ItemsSideBar = () => {
 
           {si_item.Items.map((item) => (
             <div
+              key={item.href} 
               className={cn(
                 "cursor-pointer text-base hover:bg-violet-600/65 rounded-md mb-1 transition-all ease-in-out duration-300",
                 pathname === item.href || pathname?.startsWith(`${item.href}/`) && "bg-yellow-500 w-full p-0.5 hover:bg-yellow-700"
