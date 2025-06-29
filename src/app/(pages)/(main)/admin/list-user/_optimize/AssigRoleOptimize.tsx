@@ -6,7 +6,6 @@ interface AssigRoleOptimizeProps {
 
     selectedUser: IFUser;
     setIsModalAssigRoleOpen: (isOpen: boolean) => void;
-
     setNotification: (noti: Noti | null) => void;
 }
 const handleAssigRoleUser = (id: string) => {

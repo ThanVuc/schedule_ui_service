@@ -28,9 +28,7 @@ const DetailedLockOptimize = ({ setIsModalLockOpen, selectedUser, setNotificatio
                     name: selectedUser.name,
                     lock: !selectedUser.status
                 }}
-                setNotification={(noti) => {
-                    setNotification(noti);
-                }}
+                setNotification={setNotification}
             />
         </div>
     );

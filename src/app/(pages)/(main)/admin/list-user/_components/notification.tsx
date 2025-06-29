@@ -1,6 +1,6 @@
 import { Noti } from "@/app/model/notification";
 import { cn } from "@/lib/utils";
-import { CircleCheck, X } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface NotificationProps {
@@ -28,6 +28,10 @@ const Notification = ({ noti, onClose }: NotificationProps) => {
     }, [noti.duration, onClose]);
     return (
         <div
+            onClick={() => {
+                setIsVisible(false);
+                setTimeout(onClose, 300);
+            }}
             className={cn(
                 "fixed top-4 right-4 max-w-sm p-4 rounded-lg shadow-lg flex items-center gap-2 text-white z-50 transition-all duration-500 ease-in-out transform ",
                 isVisible
@@ -37,15 +41,6 @@ const Notification = ({ noti, onClose }: NotificationProps) => {
             )}
         >
             <span className="flex items-center gap-3 pr-5"><CircleCheck /> {noti.message}</span>
-            <button
-                className="p-1 rounded-full hover:bg-red-400 absolute top-1 right-1 bg-white/20"
-                onClick={() => {
-                    setIsVisible(false);
-                    setTimeout(onClose, 300);
-                }}
-            >
-                <X size={16} />
-            </button>
         </div>
     );
 };

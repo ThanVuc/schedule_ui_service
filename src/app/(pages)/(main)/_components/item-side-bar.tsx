@@ -35,7 +35,6 @@ const ItemsSideBar = () => {
   const router = useRouter();
   const pathname = usePathname()
   const isHome = (pathname === "/")
-
   return (
     <div className="flex flex-col w-[90%] h-full mx-auto">
       <div
@@ -45,7 +44,7 @@ const ItemsSideBar = () => {
         <p
           className={cn(
             "flex items-center text-lg hover:bg-violet-600/65 font-bold rounded-sm transition-all ease-in-out duration-300",
-            isHome && "bg-yellow-500 w-full p-0.5 hover:bg-yellow-600"
+            isHome && " w-full p-0.5 hover:bg-[#EBF8FF]"
           )}
         >
           <Home className="w-6 h-6 mr-1" /> Home
@@ -61,8 +60,8 @@ const ItemsSideBar = () => {
             <div
               key={item.title}
               className={cn(
-                "p-3 cursor-pointer text-base hover:bg-violet-600/65 rounded-md mb-1 transition-all ease-in-out duration-300",
-                (pathname === item.href || pathname?.startsWith(`${item.href}/`)) && "bg-yellow-500 w-full p-3 hover:bg-yellow-700"
+                "p-3 cursor-pointer text-base  hover:bg-[#81d3ff] rounded-md mb-1 transition-all ease-in-out duration-300",
+                (pathname === item.href || pathname?.startsWith(`${item.href}/`)) && "bg-[#81d3ff] w-full p-3"
               )}
               onClick={() => router.push(item.href)}
             >

@@ -1,4 +1,5 @@
 import { IFUser } from "@/app/model/user";
+import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import {
     Pagination,
     PaginationContent,
@@ -8,7 +9,6 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
-import { ChevronsLeft, ChevronsRight } from "lucide-react";
 
 interface PaginationComponentProps {
     currentPage: number;
@@ -25,10 +25,8 @@ const PaginationComponent = ({ currentPage, onPageChange, listUser }: Pagination
         if (end - start + 1 < maxVisible) {
             start = Math.max(1, end - maxVisible + 1);
         }
-
         return Array.from({ length: end - start + 1 }, (_, i) => start + i);
     };
-
     return (
         <Pagination>
             <PaginationContent>

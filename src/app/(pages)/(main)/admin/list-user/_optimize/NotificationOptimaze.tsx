@@ -1,13 +1,13 @@
 import { Noti } from "@/app/model/notification";
 import Notification from "../_components/notification";
 
-interface NotificationProps {
+interface NotificationOptimizeProps {
     notification: Noti | null;
     setNotification: (notification: Noti | null) => void;
 }
 
 
-const NotificationOptimize = ({ notification, setNotification }: NotificationProps) => {
+const NotificationOptimize = ({ notification, setNotification }: NotificationOptimizeProps) => {
     return (
         <div>
             {notification?.isVisible && (<Notification onClose={() => setNotification(null)} noti={notification} />)}

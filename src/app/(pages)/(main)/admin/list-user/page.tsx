@@ -83,6 +83,127 @@ const ListUserPages = () => {
             updatelast: "2025-04-17 22:25:00",
             bio: "tôi là ai",
         },
+        {
+            id: "5",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "6",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "7",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "8",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "9",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "10",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "11",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "12",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "13",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+        {
+            id: "14",
+            name: "người dùng3",
+            email: "thaidaihuan@gmail.com",
+            role: ["user"],
+            status: true,
+            gender: "nữ",
+            timestamp: "2025-05-17 22:25:00",
+            date: "2004-12-25",
+            updatelast: "2025-04-17 22:25:00",
+            bio: "tôi là ai",
+        },
+
     ])
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
@@ -92,12 +213,12 @@ const ListUserPages = () => {
     );
     return (
         <div className="mx-7 mt-7">
+            {/* thông báo */}
             <NotificationOptimize notification={notification} setNotification={setNotification} />
+            {/* tiêu đề trang */}
             <TextOptimize />
-            <div>
-                <SearchAndFilter />
-            </div>
-
+            {/* tìm kiếm và lọc người dùng */}
+            <SearchAndFilter />
             {/* list user */}
             <ListUser currentUsers={currentUsers}
                 setSelectedUser={setSelectedUser}
