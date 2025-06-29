@@ -1,12 +1,12 @@
-import { IFUser } from "@/app/model/user";
 import DetailedLock from "../_components/detailedLock";
-import { Noti } from "@/app/model/notification";
+import { NotificationModel } from "../model/notification";
+import { UserModel } from "../model/user";
 interface DetailedLockOptimizeProps {
 
-    selectedUser: IFUser;
+    selectedUser: UserModel;
     setIsModalLockOpen: (isOpen: boolean) => void;
-    setListUser: (users: IFUser[] | ((users: IFUser[]) => IFUser[])) => void; // Function to update the list of users
-    setNotification: (noti: Noti | null) => void;
+    setListUser: (users: UserModel[] | ((users: UserModel[]) => UserModel[])) => void; // Function to update the list of users
+    setNotification: (noti: NotificationModel | null) => void;
 }
 
 const DetailedLockOptimize = ({ setIsModalLockOpen, selectedUser, setNotification, setListUser }: DetailedLockOptimizeProps) => {

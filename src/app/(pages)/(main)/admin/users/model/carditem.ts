@@ -1,4 +1,4 @@
-export interface IFCardItem {
+export interface CardItemModel {
     id: string,
     name: string;
     email: string;

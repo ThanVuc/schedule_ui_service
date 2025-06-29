@@ -3,8 +3,8 @@
 import { useState } from "react";
 import PaginationComponent from "./_components/pagination";
 import SearchAndFilter from "./_components/SearchAndFilter";
-import { IFUser } from "../../../../model/user";
-import { Noti } from "@/app/model/notification";
+import { IFUser } from "./model/user";
+import { Noti } from "@/app/(pages)/(main)/admin/users/model/notification";
 import ListUser from "./_optimize/listuser";
 import DetailedInformationOptimize from "./_optimize/DetailedInformationOptimize";
 import DetailedLockOptimize from "./_optimize/DetailedLockoptimize";

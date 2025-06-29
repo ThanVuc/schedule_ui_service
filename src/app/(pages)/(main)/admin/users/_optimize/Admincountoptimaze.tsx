@@ -1,6 +1,7 @@
-import { IFUser } from "@/app/model/user";
+import { UserModel } from "../model/user";
+
 interface AdminCountOptimizeProps {
-    listUser: IFUser[];
+    listUser: UserModel[];
 }
 const AdminCountOptimize = ({ listUser }: AdminCountOptimizeProps) => {
     const adminCount = listUser.filter((user) => user.role.some(role => role.toLowerCase() === "admin")).length;
