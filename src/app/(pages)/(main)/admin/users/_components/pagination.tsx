@@ -1,4 +1,3 @@
-import { IFUser } from "@/app/model/user";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import {
     Pagination,
@@ -9,10 +8,11 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
+import { UserModel } from "../model/user";
 
 interface PaginationComponentProps {
     currentPage: number;
-    listUser: IFUser[];
+    listUser: UserModel[];
     onPageChange: (page: number) => void;
 }
 const itemsPerPage = 6;

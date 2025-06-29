@@ -1,12 +1,12 @@
-import { IFUser } from "@/app/model/user";
 import AssigRole from "../_components/assigRole";
-import { Noti } from "@/app/model/notification";
+import { NotificationModel } from "../model/notification";
+import { UserModel } from "../model/user";
 
 interface AssigRoleOptimizeProps {
 
-    selectedUser: IFUser;
+    selectedUser: UserModel;
     setIsModalAssigRoleOpen: (isOpen: boolean) => void;
-    setNotification: (noti: Noti | null) => void;
+    setNotification: (noti: NotificationModel | null) => void;
 }
 const handleAssigRoleUser = (id: string) => {
 

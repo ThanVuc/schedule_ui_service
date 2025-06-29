@@ -1,15 +1,14 @@
 import { cn } from "@/lib/utils";
 import { LockKeyhole, LockKeyholeOpen } from "lucide-react";
-import { IFDetailedLock } from "../../../../../model/detailedlock";
-import { useState } from "react";
-import { Noti } from "@/app/model/notification";
+import { DetailedLockModel } from "../model/detailedlock";
+import { NotificationModel } from "../model/notification";
 
 
 interface DetailedLockProps {
     onClose: () => void;
     onLock: (id: string) => void;
-    userDetailedLock: IFDetailedLock;
-    setNotification: (noti: Noti) => void;
+    userDetailedLock: DetailedLockModel;
+    setNotification: (noti: NotificationModel) => void;
 }
 
 const DetailedLock = ({ onClose, userDetailedLock, onLock, setNotification }: DetailedLockProps) => {
