@@ -25,3 +25,15 @@ ID: 380d30dc-14eb-45db-83b8-5ea443d70cc9 | Time: 2025-06-29T03:42:22.865Z | Name
 ID: 5f0e8c65-dca4-40c7-88aa-c4c665ecac3e | Time: 2025-06-29T03:42:49.213Z | Name: ReferenceError | Cause: totalPages is not defined
 ID: cf5fc47f-9732-4149-a588-953aecd67c4f | Time: 2025-06-29T07:41:05.210Z | Name: TypeError | Cause: Failed to construct 'Headers': Please use the 'new' operator, this DOM object constructor cannot be called as a function.
 ID: aa9cc121-81ae-456a-aff7-22c5c0b54708 | Time: 2025-06-29T07:41:30.176Z | Name: ReferenceError | Cause: im is not defined
+ID: d27d3bfb-36f1-40cb-9f6c-5345d8777f0d | Time: 2025-06-29T11:10:44.438Z | Name: ReferenceError | Cause: endpoints is not defined
+ID: 9bb307be-4c95-470e-a791-69a06e73dff7 | Time: 2025-06-29T11:11:00.888Z | Name: ReferenceError | Cause: endpoints is not defined
+ID: a0c25383-e57e-41f1-a365-4aaa87266cf6 | Time: 2025-06-29T11:11:17.238Z | Name: ReferenceError | Cause: endpoints is not defined
+ID: 0c4c2ca4-d184-4280-ac42-2c73dd515d5d | Time: 2025-06-29T11:11:24.131Z | Name: ReferenceError | Cause: endpoints is not defined
+ID: 8d345d08-803f-4672-bcac-6cb740923f14 | Time: 2025-06-29T11:11:39.159Z | Name: ReferenceError | Cause: endpoints is not defined
+ID: af523983-fb8e-403f-99b1-047e1157122b | Time: 2025-06-29T11:11:41.170Z | Name: ReferenceError | Cause: endpoints is not defined
+ID: 82c18e13-e207-4611-a818-d46480757177 | Time: 2025-06-29T11:18:26.391Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
+
+Check the render method of `Header`.
+ID: a6407a94-7dfe-432f-8ce7-d6dbb47d2d0a | Time: 2025-06-29T11:22:56.943Z | Name: ReferenceError | Cause: FontAwesomeIcon is not defined
+ID: e087a6ed-6d8f-4759-8536-04420df33863 | Time: 2025-06-29T11:28:31.985Z | Name: ReferenceError | Cause: faUser is not defined
+ID: bd7bd21e-9453-4d9c-8843-1132382005cd | Time: 2025-06-29T11:28:35.715Z | Name: ReferenceError | Cause: faUser is not defined

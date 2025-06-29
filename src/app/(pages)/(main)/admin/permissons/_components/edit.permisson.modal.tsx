@@ -1,16 +1,24 @@
-// // components/CreateRoleModal.tsx
+// // components/editRoleModal.tsx
 // import { useState } from "react";
+// import { Pencil } from "lucide-react";
+
 // import ReusableModal from "./modal";
+// // import { Button } from "../../../../components/ui/button";
 
 // const resources = ["Admin", "Quản trị viên", "Người dùng"];
-
+// const statuses = ["Hoạt động", "Tạm ngưng"];
 // const allActions = ["Action 1", "Action 2", "Action 3", "Action 4", "Action 5"];
 
-// export default function CreateRoleModal() {
+// export default function EditRoleModal({ roleName }: { roleName: string }) {
 //   const [selectedResource, setSelectedResource] = useState(resources[0]);
- 
-//   const [selectedActions, setSelectedActions] = useState<string[]>([]);
-//   const [name, setName] = useState("");
+//   const [status, setStatus] = useState(statuses[0]);
+//   const [selectedActions, setSelectedActions] = useState<string[]>([
+//     "Action 1",
+//     "Action 2",
+//     "Action 3",
+//     "Action 4",
+//   ]);
+//   const [name, setName] = useState(roleName);
 //   const [note, setNote] = useState("");
 
 //   const handleCheckboxChange = (action: string) => {
@@ -22,23 +30,23 @@
 //   };
 
 //   const handleSubmit = () => {
-//     const newRole = {
+//     const data = {
 //       name,
 //       note,
 //       resource: selectedResource,
 //       status,
 //       actions: selectedActions,
 //     };
-//     console.log("➕ Thêm quyền mới:", newRole);
-//     // Gọi API hoặc callback truyền từ props nếu cần
+//     console.log("📝 Lưu dữ liệu:", data);
 //   };
 
 //   return (
 //     <ReusableModal
-//       title="Thêm quyền"
+//       title="Sửa quyền"
 //       trigger={
-//         <button className="h-12 px-6 rounded-2xl cursor-pointer bg-blue-500 text-white font-semibold hover:bg-blue-600 transition">
-//           Thêm quyền
+//         <button className="flex items-center gap-1 bg-yellow-100 text-yellow-800 px-3 py-1 rounded-md text-sm hover:bg-yellow-200">
+//             <Pencil size={14} />
+//            Sửa
 //         </button>
 //       }
 //       onSubmit={handleSubmit}
@@ -46,6 +54,7 @@
 //       cancelText="Thoát"
 //     >
 //       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//         {/* Left column */}
 //         <div className="space-y-4">
 //           <div>
 //             <label className="font-medium">Resource</label>
@@ -59,9 +68,21 @@
 //               ))}
 //             </select>
 //           </div>
-        
+//           <div>
+//             <label className="font-medium">Trạng thái</label>
+//             <select
+//               value={status}
+//               onChange={(e) => setStatus(e.target.value)}
+//               className="w-full border rounded px-3 py-2 mt-1"
+//             >
+//               {statuses.map((s) => (
+//                 <option key={s}>{s}</option>
+//               ))}
+//             </select>
+//           </div>
 //         </div>
 
+//         {/* Right column - Actions */}
 //         <div>
 //           <label className="font-medium">Hành động</label>
 //           <div className="border rounded px-3 py-2 mt-1 space-y-2 shadow-sm">
@@ -79,6 +100,7 @@
 //         </div>
 //       </div>
 
+//       {/* Name + Note */}
 //       <div className="mt-6 space-y-4">
 //         <div>
 //           <label className="font-medium">Tên quyền</label>
@@ -105,22 +127,25 @@
 //   );
 // }
 
-
 import { useState, useEffect } from "react";
+import { Pencil } from "lucide-react";
+
 import ReusableModal from "./modal";
-import { createPermission, getResources, getActionsByResource } from "./permisson-api";
+import { updatePermission, getResources, getActionsByResource } from "./permisson.api";
 
 interface Props {
+  roleId: number;
+  roleName: string;
   onSuccess: () => void;
 }
 
-export default function CreateRoleModal({ onSuccess }: Props) {
+export default function EditRoleModal({ roleId, roleName, onSuccess }: Props) {
   const [resources, setResources] = useState<string[]>([]);
   const [actions, setActions] = useState<string[]>([]);
 
   const [selectedResource, setSelectedResource] = useState("");
   const [selectedActions, setSelectedActions] = useState<string[]>([]);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(roleName);
   const [note, setNote] = useState("");
 
   useEffect(() => {
@@ -151,26 +176,27 @@ export default function CreateRoleModal({ onSuccess }: Props) {
 
   const handleSubmit = async () => {
     try {
-      const newRole = {
+      const data = {
         name,
         note,
         resource: selectedResource,
         actions: selectedActions,
       };
-      await createPermission(newRole);
+      await updatePermission(roleId, data);
       onSuccess();
     } catch (error) {
-      console.error("Lỗi khi tạo quyền:", error);
-      alert("Tạo quyền thất bại");
+      console.error("Lỗi khi cập nhật quyền:", error);
+      alert("Cập nhật quyền thất bại");
     }
   };
 
   return (
     <ReusableModal
-      title="Thêm quyền"
+      title="Sửa quyền"
       trigger={
-        <button className="h-12 px-6 rounded-2xl cursor-pointer bg-blue-500 text-white font-semibold hover:bg-blue-600 transition">
-          Thêm quyền
+        <button className="flex items-center gap-1 bg-yellow-100 text-yellow-800 px-3 py-1 rounded-md text-sm hover:bg-yellow-200">
+          <Pencil size={14} />
+          Sửa
         </button>
       }
       onSubmit={handleSubmit}
@@ -178,6 +204,7 @@ export default function CreateRoleModal({ onSuccess }: Props) {
       cancelText="Thoát"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Left column */}
         <div className="space-y-4">
           <div>
             <label className="font-medium">Resource</label>
@@ -193,6 +220,7 @@ export default function CreateRoleModal({ onSuccess }: Props) {
           </div>
         </div>
 
+        {/* Right column - Actions */}
         <div>
           <label className="font-medium">Hành động</label>
           <div className="border rounded px-3 py-2 mt-1 space-y-2 shadow-sm">
@@ -210,6 +238,7 @@ export default function CreateRoleModal({ onSuccess }: Props) {
         </div>
       </div>
 
+      {/* Name + Note */}
       <div className="mt-6 space-y-4">
         <div>
           <label className="font-medium">Tên quyền</label>
@@ -235,5 +264,3 @@ export default function CreateRoleModal({ onSuccess }: Props) {
     </ReusableModal>
   );
 }
-
- 

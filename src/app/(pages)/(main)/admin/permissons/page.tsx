@@ -249,9 +249,9 @@
 import React, { useState, useEffect } from "react";
 import RoleItem from "./_components/permisson";
 import CustomPagination from "./_components/pagination";
-import CreateRoleModal from "./_components/create-permisson-modal";
+import CreateRoleModal from "./_components/create.permisson.modal";
 // import { fetchPermissions } from "./_components/roleApi";
-import { mockRoles } from "./_components/mock-permissons";
+import { mockRoles } from "./_components/mock.permissons";
 
 export default function RolesList() {
   const itemsPerPage = 5;
@@ -339,11 +339,11 @@ const fetchData = async () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          background: "linear-gradient(to right, #77A1D3, #79CBCA, #F896C0)",
+          // background: "linear-gradient(to right, #77A1D3, #79CBCA, #F896C0)",
           opacity: 0.3,
         }}
       />
-      <div className="relative z-10 p-10">
+      <div className="relative z-10 p-5">
         <h1 className="text-4xl font-bold">Danh sách quyền</h1>
       </div>
 

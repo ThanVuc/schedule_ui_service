@@ -121,8 +121,8 @@
 import React from "react";
 import { Eye } from "lucide-react";
 import ReusableModal from "./modal";
-import EditRoleModal from "./edit-permisson-modal";
-import DeleteRoleModal from "./delete-permisson-modal";
+import EditRoleModal from "./edit.permisson.modal";
+import DeleteRoleModal from "./delete.permisson.modal";
 
 interface RoleItemProps {
   id: number;
@@ -136,7 +136,7 @@ export default function RoleItem({ id, name, onRefresh }: RoleItemProps) {
       const confirmed = confirm(`Bạn có chắc muốn xóa quyền "${name}"?`);
       if (!confirmed) return;
 
-      const { deletePermission } = await import("./permisson-api");
+      const { deletePermission } = await import("./permisson.api");
       await deletePermission(id);
       onRefresh();
     } catch (error) {
