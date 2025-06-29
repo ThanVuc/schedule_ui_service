@@ -247,11 +247,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import RoleItem from "./_components/role";
+import RoleItem from "./_components/permisson";
 import CustomPagination from "./_components/pagination";
-import CreateRoleModal from "./_components/createRoleModal";
+import CreateRoleModal from "./_components/create-permisson-modal";
 // import { fetchPermissions } from "./_components/roleApi";
-import { mockRoles } from "./_components/mockRoles";
+import { mockRoles } from "./_components/mock-permissons";
 
 export default function RolesList() {
   const itemsPerPage = 5;
