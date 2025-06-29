@@ -10,7 +10,7 @@ const ItemsSideBar = () => {
       Items: [
         {
           title: " Danh sách người dùng",
-          href: "/admin/list-user",
+          href: "/admin/users",
         },
         {
           title: "Danh sách vai trò",
