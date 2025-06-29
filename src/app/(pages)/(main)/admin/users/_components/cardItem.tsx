@@ -1,10 +1,10 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Crown, LockKeyhole, LockKeyholeOpen, Shield } from "lucide-react";
-import { IFCardItem } from "../../../../../model/carditem";
+import { CardItemModel } from "../model/carditem";
 
 interface CardItemProps {
-    userCardItem: IFCardItem;
+    userCardItem: CardItemModel;
     onClick: () => void;
     onClickLock: () => void;
     onClickAssigRole: () => void,

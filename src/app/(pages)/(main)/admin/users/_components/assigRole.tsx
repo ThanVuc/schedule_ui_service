@@ -1,25 +1,25 @@
 import { IdCardLanyard, UserRound } from "lucide-react";
-import { IFAssigRole } from "../../../../../model/assigrole";
 import AssigListRole from "./assiglistrole";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { IFAssigListRole } from "@/app/model/assiglistrole";
+import { AssigRoleModel } from "../model/assigrole";
+import { AssigListRoleModel } from "../model/assiglistrole";
 
 interface AssigRoleProps {
     onClose: () => void;
     onAssig: (id: string) => void;
-    userAssigRole: IFAssigRole;
+    userAssigRole: AssigRoleModel;
 }
 
 const AssigRole = ({ onClose, onAssig, userAssigRole }: AssigRoleProps) => {
-    const [roleList, setRoleList] = useState<IFAssigListRole[]>([
+    const [roleList, setRoleList] = useState<AssigListRoleModel[]>([
         { id: "1", roleName: "admin" },
         { id: "2", roleName: "user" },
         { id: "3", roleName: "editor" },
         { id: "4", roleName: "viewer" },
     ]);
-    const [userAssigRoles, setUserAssigRoles] = useState<IFAssigRole>(userAssigRole);
+    const [userAssigRoles, setUserAssigRoles] = useState<AssigRoleModel>(userAssigRole);
     const handleToggleRoles = (roleName: string) => {
         setUserAssigRoles((prev) => ({
             ...prev,

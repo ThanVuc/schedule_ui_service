@@ -1,9 +1,9 @@
-import { Noti } from "@/app/model/notification";
 import Notification from "../_components/notification";
+import { NotificationModel } from "../model/notification";
 
 interface NotificationOptimizeProps {
-    notification: Noti | null;
-    setNotification: (notification: Noti | null) => void;
+    notification: NotificationModel | null;
+    setNotification: (notification: NotificationModel | null) => void;
 }
 
 

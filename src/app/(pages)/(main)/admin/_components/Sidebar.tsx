@@ -13,17 +13,12 @@ import {
 
 const Sidebar = () => {
   const pathname = usePathname();
-
-  const endpoints = "/personal-account"
-
-
+  const endpoints = "/admin"
   const menuItems = [
-    { href: `${endpoints}/home`, icon: faHome, label: "Trang Chủ" },
-    { href: `${endpoints}/personal-info`, icon: faUser, label: "Thông tin cá nhân" },
-    { href: `${endpoints}/edit-profile`, icon: faPenToSquare, label: "Chỉnh sửa thông tin" },
-    { href: `${endpoints}/reset-pass`, icon: faLock, label: "Đặt lại mật khẩu" },
+    { href: `/`, icon: faHome, label: "Trang Chủ" },
+    { href: `${endpoints}/users`, icon: faUser, label: "Danh sách người dùng" },
+    { href: `${endpoints}/roles`, icon: faPenToSquare, label: "Danh sách vai trò" },
   ];
-
   return (
     <div className="w-64 min-h-screen bg-white border-r px-4 py-6">
       {/* Logo + App name */}

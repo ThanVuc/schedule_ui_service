@@ -1,9 +1,9 @@
-import { IFUser } from "@/app/model/user";
 import DetailedInformation from "../_components/detailedInformation";
+import { UserModel } from "../model/user";
 
 interface ListUserProps {
     setIsModalOpen: (isOpen: boolean) => void;
-    selectedUser: IFUser;
+    selectedUser: UserModel;
 }
 
 const DetailedInformationOptimize = ({ setIsModalOpen, selectedUser }: ListUserProps) => {
