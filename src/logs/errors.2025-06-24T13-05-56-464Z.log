@@ -37,3 +37,10 @@ Check the render method of `Header`.
 ID: a6407a94-7dfe-432f-8ce7-d6dbb47d2d0a | Time: 2025-06-29T11:22:56.943Z | Name: ReferenceError | Cause: FontAwesomeIcon is not defined
 ID: e087a6ed-6d8f-4759-8536-04420df33863 | Time: 2025-06-29T11:28:31.985Z | Name: ReferenceError | Cause: faUser is not defined
 ID: bd7bd21e-9453-4d9c-8843-1132382005cd | Time: 2025-06-29T11:28:35.715Z | Name: ReferenceError | Cause: faUser is not defined
+ID: 8c95187b-07ad-4d76-868e-b76886b77e05 | Time: 2025-06-30T10:30:40.282Z | Name: ReferenceError | Cause: Link is not defined
+ID: 3068353e-a870-4ac1-88e1-bac3aaaa49ab | Time: 2025-06-30T10:41:26.513Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `MainLayout`.
+ID: 28ac40b7-2087-4a07-b2b8-4d3a7c8bd228 | Time: 2025-06-30T10:47:50.402Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `MainLayout`.
