@@ -181,7 +181,7 @@ export default function Header({
                 setIsUserMenuOpen(true);
               }
             }}
-            className="flex items-center gap-3 bg-gray-100 rounded-tr-2xl rounded-br-2xl px-5 py-2 min-w-[200px] border-l border-gray-200 cursor-pointer"
+            className="flex items-center gap-3 bg-gray-100 rounded-tr-2xl rounded-br-2xl px-5 py-2 min-w-1 border-l border-gray-200 cursor-pointer"
           >
             <div className="h-10 w-10 rounded-full flex items-center justify-center overflow-hidden">
               {avatarUrl ? (

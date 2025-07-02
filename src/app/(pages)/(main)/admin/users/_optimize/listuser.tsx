@@ -9,7 +9,7 @@ interface ListUserProps {
 }
 
 const ListUser = ({ currentUsers, setSelectedUser, setIsModalOpen, setIsModalLockOpen, setIsModalAssigRoleOpen }: ListUserProps) => {
-    return (<div className="mt-10 flex flex-col gap-3">
+    return (<div className="mt-10 flex flex-col gap-3 ">
         {currentUsers.map((user) => (
             <CardItem
                 key={user.id}

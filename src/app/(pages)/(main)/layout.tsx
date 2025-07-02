@@ -1,14 +1,12 @@
 "use client";
 import Header from "./_components/header";
+import React from "react";
+
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex flex-col">
-      <div><Header userName="John Doe" userRole="Admin" /></div>
-      <div className="flex">
-        <div className="flex-1">
-          {children}
-        </div>
-      </div>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Header userName="John Doe" userRole="Admin" />
+      <main className="flex-1 overflow-y-auto p-4">{children}</main>
     </div>
   );
 };
