@@ -3,23 +3,23 @@
 import { useState } from "react";
 import PaginationComponent from "./_components/pagination";
 import SearchAndFilter from "./_components/SearchAndFilter";
-import { IFUser } from "./model/user";
-import { Noti } from "@/app/(pages)/(main)/admin/users/model/notification";
 import ListUser from "./_optimize/listuser";
 import DetailedInformationOptimize from "./_optimize/DetailedInformationOptimize";
 import DetailedLockOptimize from "./_optimize/DetailedLockoptimize";
 import AssigRoleOptimize from "./_optimize/AssigRoleOptimize";
-import AdminCountOptimize from "./_optimize/Admincountoptimaze";
+import AdminCount from "./_components/Admincountoptimaze";
 import NotificationOptimize from "./_optimize/NotificationOptimaze";
 import TextOptimize from "./_optimize/TextOptimaze";
+import { UserModel } from "./model/user";
+import { NotificationModel } from "./model/notification";
 
 
 const ListUserPages = () => {
-    const [notification, setNotification] = useState<Noti | null>(null);
+    const [notification, setNotification] = useState<NotificationModel | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalLockOpen, setIsModalLockOpen] = useState(false)
     const [isModalAssigRoleOpen, setIsModalAssigRoleOpen] = useState(false)
-    const [selectedUser, setSelectedUser] = useState<IFUser>({
+    const [selectedUser, setSelectedUser] = useState<UserModel>({
         id: "",
         name: "",
         date: "",
@@ -212,7 +212,7 @@ const ListUserPages = () => {
         currentPage * itemsPerPage
     );
     return (
-        <div className="mx-7 mt-7">
+        <div className="flex-1 px-4 py-6 md:px-7 md:mt-7 pb-10">
             {/* thông báo */}
             <NotificationOptimize notification={notification} setNotification={setNotification} />
             {/* tiêu đề trang */}
@@ -260,7 +260,7 @@ const ListUserPages = () => {
                     />
                 </div>
             </div>
-            <AdminCountOptimize
+            <AdminCount
                 listUser={listUser}
             />
         </div>

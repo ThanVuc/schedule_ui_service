@@ -70,7 +70,7 @@ const CardItem = ({ userCardItem, onClick, onClickLock, onClickAssigRole }: Card
 
 
     return (<div>
-        <Card className="" onClick={onClick}>
+        <Card className="hover:bg-[#edf0f5] transform " onClick={onClick}>
             <div className="flex justify-between px-2" >
                 <div className="flex items-center" >
                     <Avatar className={`p-5 ${avatarBg} text-white`}>
@@ -101,13 +101,13 @@ const CardItem = ({ userCardItem, onClick, onClickLock, onClickAssigRole }: Card
                     >
                         {userCardItem.status ? "Hoạt Động" : "Bị Khóa"}
                     </span>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => {
+                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#10B981] " onClick={(e) => {
                         e.stopPropagation()
                         onClickAssigRole();
                     }}>
                         <Shield />
                     </button>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#E5E7EB]" onClick={(e) => {
+                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#EF4444]" onClick={(e) => {
                         e.stopPropagation();
                         onClickLock();
                     }}>

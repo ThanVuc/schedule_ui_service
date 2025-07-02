@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import DetailedLock from "../_components/detailedLock";
 import { NotificationModel } from "../model/notification";
 import { UserModel } from "../model/user";
@@ -10,6 +11,16 @@ interface DetailedLockOptimizeProps {
 }
 
 const DetailedLockOptimize = ({ setIsModalLockOpen, selectedUser, setNotification, setListUser }: DetailedLockOptimizeProps) => {
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setIsModalLockOpen(false);
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [setIsModalLockOpen]);
+
     const handleLockUser = (id: string) => {
         setListUser((prev) =>
             prev.map((user) =>
@@ -19,17 +30,24 @@ const DetailedLockOptimize = ({ setIsModalLockOpen, selectedUser, setNotificatio
         setIsModalLockOpen(false);
     };
     return (
-        <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30">
-            <DetailedLock
-                onClose={() => setIsModalLockOpen(false)}
-                onLock={() => handleLockUser(selectedUser.id)}
-                userDetailedLock={{
-                    id: selectedUser.id,
-                    name: selectedUser.name,
-                    lock: !selectedUser.status
-                }}
-                setNotification={setNotification}
-            />
+        <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30"
+            onClick={() => setIsModalLockOpen(false)}
+
+        >
+            <div className="relative"
+                onClick={e => e.stopPropagation()}
+            >
+                <DetailedLock
+                    onClose={() => setIsModalLockOpen(false)}
+                    onLock={() => handleLockUser(selectedUser.id)}
+                    userDetailedLock={{
+                        id: selectedUser.id,
+                        name: selectedUser.name,
+                        lock: !selectedUser.status
+                    }}
+                    setNotification={setNotification}
+                />
+            </div>
         </div>
     );
 }

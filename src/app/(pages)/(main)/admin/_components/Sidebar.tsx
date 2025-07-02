@@ -7,51 +7,49 @@ import {
   faHome,
   faUser,
   faPenToSquare,
-  faLock,
   faLayerGroup,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const endpoints = "/admin"
+  const endpoints = "/admin";
   const menuItems = [
     { href: `/`, icon: faHome, label: "Trang Chủ" },
     { href: `${endpoints}/users`, icon: faUser, label: "Danh sách người dùng" },
     { href: `${endpoints}/roles`, icon: faPenToSquare, label: "Danh sách vai trò" },
   ];
+
   return (
-    <div className="w-64 min-h-screen bg-white border-r px-4 py-6">
-      {/* Logo + App name */}
-      <div className="flex items-center gap-3 mb-8 px-2">
+    <aside className="w-64 min-h-screen bg-white border-r px-5 py-6 hidden md:block">
+      <div className="flex items-center gap-3 mb-10 px-2">
         <FontAwesomeIcon
           icon={faLayerGroup}
-          className="text-blue-500 w-5 h-5"
+          className="text-blue-500 w-6 h-6"
         />
-        <span className="font-semibold text-[17px]">Scrum Schedule App</span>
+        <span className="font-semibold text-xl text-gray-800">
+          Scrum Schedule
+        </span>
       </div>
-
-      {/* Navigation */}
-      <nav className="flex flex-col gap-1 text-[15px] font-normal">
+      <nav className="flex flex-col gap-1 text-sm font-medium">
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
-
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-2 px-3 py-2 rounded-md transition-all
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all
                 ${isActive
-                  ? "bg-blue-100 text-blue-600 font-medium"
-                  : "text-gray-700 hover:bg-blue-50"}
+                  ? "bg-blue-100 text-blue-600 font-semibold"
+                  : "text-gray-700 hover:bg-gray-100"}
               `}
             >
-              <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-inherit" />
-              <span className="truncate">{item.label}</span>
+              <FontAwesomeIcon icon={item.icon} className="w-4 h-4" />
+              <span>{item.label}</span>
             </Link>
           );
         })}
       </nav>
-    </div>
+    </aside>
   );
 };
 

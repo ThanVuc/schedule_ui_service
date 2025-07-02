@@ -19,7 +19,7 @@ const SearchAndFilter = () => {
     const [value, setValue] = useState("");
 
     return (
-        <div className="flex w-2/5 mt-4">
+        <div className="flex w-2/5 mt-4 ">
             <Input className="mr-3" placeholder="Tìm theo tên hoặc email..." />
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
@@ -27,7 +27,7 @@ const SearchAndFilter = () => {
                         variant="outline"
                         role="combobox"
                         aria-expanded={open}
-                        className="w-[200px] justify-between"
+                        className="w-[200px] justify-between hidden md:block"
                     >
                         {value
                             ? itemComboBox.find((item) => item.value === value)?.label
@@ -44,7 +44,7 @@ const SearchAndFilter = () => {
                                     value={item.value}
                                     onSelect={(currentValue) => {
                                         setValue(currentValue === value ? "" : currentValue);
-                                        handleFilterChange(currentValue === value ? "" : currentValue); // Gọi callback khi chọn filter
+                                        handleFilterChange(currentValue === value ? "" : currentValue);
                                         setOpen(false);
                                     }}
                                 >
