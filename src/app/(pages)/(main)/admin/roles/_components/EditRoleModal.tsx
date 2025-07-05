@@ -143,7 +143,7 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
 
       {/* Permissions */}
       <div className="space-y-2">
-        <h3 className="font-semibold text-sm text-gray-800">✅ Quyền hạn</h3>
+        <h3 className="font-semibold text-sm text-gray-800">✅ Quyền hạnn</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {currentPermissions.map((perm, idx) => (
             <label

@@ -15,7 +15,7 @@ interface AddRoleModalProps {
 const PER_PAGE = 6;
 
 const allPermissions = [
-  { label: "Xem danh sách người dùng", description: "Hiển thị toàn bộ người dùng trong hệ thống" },
+  { label: "Xem danh sách người dùng", description: "Hiển thị toàn bộ người dùng trong hệ thống " },
   { label: "Chi tiết người dùng", description: "Xem hồ sơ và quyền của từng người" },
   { label: "Gán vai trò", description: "Gán Admin/Thành viên cho người dùng khác" },
   { label: "Khóa người dùng", description: "Vô hiệu hóa người dùng" },
