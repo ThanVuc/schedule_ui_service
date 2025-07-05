@@ -39,7 +39,7 @@ const ConfirmDeactivateModal: React.FC<Props> = ({ show, onClose, isReactivate }
           </div>
         </div>
         <p className="text-center text-sm text-gray-700 mb-2">
-          Bạn có chắc chắn muốn {isReactivate ? "kích hoạt lại" : "vô hiệu hóa"} vai trò này không?
+          Bạn có chắc chắn muốnn {isReactivate ? "kích hoạt lại" : "vô hiệu hóa"} vai trò này không?
         </p>
         <p className="text-center text-xs text-gray-500">{description}</p>
         <div className="mt-6 flex justify-end gap-3">

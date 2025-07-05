@@ -60,7 +60,7 @@ const RoleDetailModal: React.FC<RoleDetailModalProps> = ({ show, role, onClose }
           </div>
 
           <div>
-            <p className="text-sm text-gray-500 mb-1 font-medium">Trạng thái</p>
+            <p className="text-sm text-gray-500 mb-1 font-medium">Trạng tháii</p>
             <span className="inline-flex items-center gap-2 px-2 py-1 text-sm bg-green-100 text-green-700 rounded-md font-medium">
               <FontAwesomeIcon icon={faCheckCircle} className="w-4 h-4" />
               {role.status}

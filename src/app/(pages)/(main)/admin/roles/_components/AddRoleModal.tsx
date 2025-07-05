@@ -1,18 +1,21 @@
 
+
+
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Toast, { ToastType } from "@/components/Toast";
 import ConfirmDialog from "./ConfirmDialog";
 
-interface AddRoleFormProps {
-  onCancel: () => void;
+interface AddRoleModalProps {
+  show: boolean;
+  onClose: () => void;
 }
 
 const PER_PAGE = 6;
 
 const allPermissions = [
-  { label: "Xem danh sách người dùng", description: "Hiển thị toàn bộ người dùng trong hệ thống" },
+  { label: "Xem danh sách người dùng", description: "Hiển thị toàn bộ người dùng trong hệ thống " },
   { label: "Chi tiết người dùng", description: "Xem hồ sơ và quyền của từng người" },
   { label: "Gán vai trò", description: "Gán Admin/Thành viên cho người dùng khác" },
   { label: "Khóa người dùng", description: "Vô hiệu hóa người dùng" },
@@ -25,6 +28,31 @@ const allPermissions = [
   { label: "Quản lý phân hệ", description: "Quản lý quyền theo từng phân hệ riêng biệt" },
   { label: "Thống kê nâng cao", description: "Xem báo cáo tổng hợp theo thời gian & vai trò" },
 ];
+
+const AddRoleModal: React.FC<AddRoleModalProps> = ({ show, onClose }) => {
+  if (!show) return null;
+
+  return (
+   <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/10 backdrop-blur-[1px] transition-opacity duration-300 ease-in-out">
+      <div className="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-6 animate-fadeIn">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold">Thêm vai trò mới</h2>
+          <button
+            onClick={onClose}
+            className="text-sm text-gray-500 hover:text-red-500"
+          >
+            Đóng
+          </button>
+        </div>
+        <AddRoleForm onCancel={onClose} />
+      </div>
+    </div>
+  );
+};
+
+interface AddRoleFormProps {
+  onCancel: () => void;
+}
 
 const AddRoleForm: React.FC<AddRoleFormProps> = ({ onCancel }) => {
   const [page, setPage] = useState(0);
@@ -60,24 +88,23 @@ const AddRoleForm: React.FC<AddRoleFormProps> = ({ onCancel }) => {
     showToast({ type: "success", message: "Lưu thành công", description: "Vai trò đã được thêm." });
 
     setTimeout(() => {
+      onCancel();
       router.push(`/admin/roles?new=${encodeURIComponent(name)}&desc=${encodeURIComponent(description)}`);
     }, 1500);
   };
 
   const handleCancel = () => {
     showToast({ type: "error", message: "Hủy thao tác", description: "Thêm vai trò thất bại." });
-
-    setTimeout(() => {
-      onCancel();
-    }, 1000);
+    setTimeout(() => onCancel(), 1000);
   };
 
   const currentPermissions = allPermissions.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+  const totalPages = Math.ceil(allPermissions.length / PER_PAGE);
 
   return (
-    <div className="p-6 max-w-3xl mx-auto border rounded-lg bg-white shadow-md space-y-6 relative">
+    <div className="space-y-6 relative">
       {/* Toast */}
-      <div className="fixed top-6 right-6 space-y-2 z-50">
+      <div className="fixed top-6 right-6 space-y-2 z-[9999]">
         {toasts.map((toast) => (
           <Toast
             key={toast.id}
@@ -100,7 +127,7 @@ const AddRoleForm: React.FC<AddRoleFormProps> = ({ onCancel }) => {
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Mô tả</label>
+          <label className="block text-xs font-medium text-gray-700 mb-1">Mô tả vai trò</label>
           <textarea
             rows={3}
             value={description}
@@ -138,14 +165,24 @@ const AddRoleForm: React.FC<AddRoleFormProps> = ({ onCancel }) => {
 
         {/* Pagination */}
         <div className="flex justify-between items-center pt-1 text-xs text-gray-600">
-          <span>Trang {page + 1}/{Math.ceil(allPermissions.length / PER_PAGE)}</span>
+          <span>Trang {page + 1}/{totalPages}</span>
           <div className="flex gap-1.5">
-            <button onClick={() => setPage(p => p - 1)} disabled={page === 0}
-              className={`px-2 py-1 rounded ${page === 0 ? "bg-gray-100 text-gray-400" : "bg-gray-200 hover:bg-gray-300"}`}>
+            <button
+              onClick={() => setPage((p) => p - 1)}
+              disabled={page === 0}
+              className={`px-2 py-1 rounded ${
+                page === 0 ? "bg-gray-100 text-gray-400" : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
               Trước
             </button>
-            <button onClick={() => setPage(p => p + 1)} disabled={page === Math.ceil(allPermissions.length / PER_PAGE) - 1}
-              className={`px-2 py-1 rounded ${page === Math.ceil(allPermissions.length / PER_PAGE) - 1 ? "bg-gray-100 text-gray-400" : "bg-gray-200 hover:bg-gray-300"}`}>
+            <button
+              onClick={() => setPage((p) => p + 1)}
+              disabled={page === totalPages - 1}
+              className={`px-2 py-1 rounded ${
+                page === totalPages - 1 ? "bg-gray-100 text-gray-400" : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
               Sau
             </button>
           </div>
@@ -154,10 +191,16 @@ const AddRoleForm: React.FC<AddRoleFormProps> = ({ onCancel }) => {
 
       {/* Actions */}
       <div className="flex justify-end gap-2 pt-2">
-        <button onClick={handleCancel} className="px-4 py-1.5 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition text-xs">
+        <button
+          onClick={handleCancel}
+          className="px-4 py-1.5 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition text-xs"
+        >
           Hủy
         </button>
-        <button onClick={() => setShowConfirm(true)} className="px-4 py-1.5 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition text-xs">
+        <button
+          onClick={() => setShowConfirm(true)}
+          className="px-4 py-1.5 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition text-xs"
+        >
           Lưu
         </button>
       </div>
@@ -179,4 +222,4 @@ const AddRoleForm: React.FC<AddRoleFormProps> = ({ onCancel }) => {
   );
 };
 
-export default AddRoleForm;
+export default AddRoleModal;

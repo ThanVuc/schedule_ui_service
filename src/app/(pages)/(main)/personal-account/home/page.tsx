@@ -28,7 +28,7 @@ const Dashboard = () => {
               <div>
                 <p className="font-semibold text-black">Tổng quan</p>
                 <p className="text-sm text-black">
-                  Chào mừng bạn quay trở lại với hệ thống quản lý cá nhân.
+                  Chào mừng bạn quay trở lại với hệ thống quản lý cá nhânn.
                 </p>
               </div>
             </div>

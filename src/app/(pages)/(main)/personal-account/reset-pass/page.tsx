@@ -202,7 +202,7 @@ export default function ResetPasswordPage() {
             }}
             className="text-sm text-blue-500 hover:underline"
           >
-            Quay Lại Đăng Nhập
+            Quay Lại Đăng Nhậpp
           </button>
         </div>
 

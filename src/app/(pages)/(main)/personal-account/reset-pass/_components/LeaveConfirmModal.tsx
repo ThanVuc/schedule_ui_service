@@ -26,7 +26,7 @@ const LeaveConfirmModal: React.FC<Props> = ({ onStay, onLeave }) => {
           </div>
           <div className="text-left">
             <h2 className="text-lg font-semibold text-gray-800">
-              Bạn có chắc chắn muốn rời khỏi trang?
+              Bạn có chắc chắn muốn rời khỏi trangg?
             </h2>
             <p className="text-sm text-gray-600 mt-1 leading-relaxed">
               Bạn đang chỉnh sửa nội dung và thay đổi hiện tại chưa được lưu.

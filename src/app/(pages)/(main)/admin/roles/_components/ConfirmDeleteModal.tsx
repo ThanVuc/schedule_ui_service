@@ -24,7 +24,7 @@
           </div>
           <h2 className="text-lg font-bold text-center text-red-600">Xác nhận xóa</h2>
           <p className="text-center text-sm text-gray-700 mt-4 mb-6">
-            Bạn có chắc chắn muốn xóa vai trò này?
+            Bạn có chắc chắn muốnn xóa vai trò này?
           </p>
           <div className="flex justify-end gap-3">
             <button

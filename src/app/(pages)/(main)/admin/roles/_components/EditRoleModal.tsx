@@ -1,10 +1,19 @@
+
+
+
+
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Toast, { ToastType } from "@/components/Toast";
 import ConfirmDialog from "./ConfirmDialog";
-import { useRouter } from "next/navigation";
 
+interface EditRoleModalProps {
+  show: boolean;
+  roleId: string;
+  onClose: () => void;
+}
 
 const allPermissions = [
   { label: "Xem danh sách người dùng", description: "Hiển thị toàn bộ người dùng trong hệ thống" },
@@ -15,6 +24,27 @@ const allPermissions = [
 ];
 
 const PER_PAGE = 5;
+
+const EditRoleModal: React.FC<EditRoleModalProps> = ({ show, roleId, onClose }) => {
+  if (!show) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm transition-opacity duration-300 ease-in-out">
+      <div className="bg-white rounded-lg shadow-lg max-w-4xl w-full p-6 animate-fadeIn">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold">Chỉnh sửa vai trò</h2>
+          <button
+            onClick={onClose}
+            className="text-sm text-gray-500 hover:text-red-500"
+          >
+            Đóng
+          </button>
+        </div>
+        <EditRoleForm roleId={roleId} onCancel={onClose} />
+      </div>
+    </div>
+  );
+};
 
 interface EditRoleFormProps {
   roleId: string;
@@ -30,9 +60,7 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const router = useRouter();
 
-  // Giả lập load dữ liệu
   useEffect(() => {
-    // Gọi API lấy thông tin vai trò theo roleId
     setTimeout(() => {
       setName("Vai trò mẫu");
       setDescription("Mô tả của vai trò mẫu");
@@ -50,9 +78,11 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
       showToast({ type: "error", message: "Thiếu tên vai trò", description: "Vui lòng nhập tên." });
       return;
     }
+
     showToast({ type: "success", message: "Cập nhật thành công", description: "Vai trò đã được chỉnh sửa." });
 
     setTimeout(() => {
+      onCancel(); // ✅ Đóng modal
       router.push("/admin/roles");
     }, 1500);
   };
@@ -60,8 +90,8 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
   const handleCancelConfirm = () => {
     showToast({ type: "error", message: "Hủy thao tác", description: "Chỉnh sửa vai trò thất bại." });
     setTimeout(() => {
-        onCancel();
-        router.push("/admin/roles");
+      onCancel();
+      router.push("/admin/roles");
     }, 1000);
   };
 
@@ -75,15 +105,19 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
   const totalPages = Math.ceil(allPermissions.length / PER_PAGE);
 
   return (
-    <div className="p-6 max-w-4xl mx-auto border rounded-lg bg-white shadow-md space-y-6 relative">
-      {/* Toast hiển thị */}
-      <div className="fixed top-6 right-6 space-y-2 z-50">
+    <div className="space-y-6 relative">
+      {/* Toast */}
+      <div className="fixed top-6 right-6 space-y-2 z-[999]">
         {toasts.map((toast) => (
-          <Toast key={toast.id} {...toast} onClose={() => setToasts((prev) => prev.filter((t) => t.id !== toast.id))} />
+          <Toast
+            key={toast.id}
+            {...toast}
+            onClose={() => setToasts((prev) => prev.filter((t) => t.id !== toast.id))}
+          />
         ))}
       </div>
 
-      {/* Thông tin cơ bản */}
+      {/* Inputs */}
       <div className="space-y-3">
         <div>
           <label className="block text-xs font-medium text-gray-700 mb-1">Tên vai trò</label>
@@ -107,7 +141,7 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
         </div>
       </div>
 
-      {/* Quyền hạn */}
+      {/* Permissions */}
       <div className="space-y-2">
         <h3 className="font-semibold text-sm text-gray-800">✅ Quyền hạn</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -132,7 +166,7 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
           ))}
         </div>
 
-        {/* Phân trang */}
+        {/* Pagination */}
         <div className="flex justify-between items-center pt-1 text-xs text-gray-600">
           <span>Trang {page + 1}/{totalPages}</span>
           <div className="flex gap-1.5">
@@ -158,7 +192,7 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
         </div>
       </div>
 
-      {/* Hành động */}
+      {/* Actions */}
       <div className="flex justify-end gap-2 pt-2">
         <button
           onClick={handleCancelConfirm}
@@ -174,7 +208,7 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
         </button>
       </div>
 
-      {/* Xác nhận popup */}
+      {/* Confirm dialog */}
       <ConfirmDialog
         open={showConfirm}
         title="Xác nhận chỉnh sửa"
@@ -189,5 +223,4 @@ const EditRoleForm: React.FC<EditRoleFormProps> = ({ roleId, onCancel }) => {
   );
 };
 
-export default EditRoleForm;
-
+export default EditRoleModal;
