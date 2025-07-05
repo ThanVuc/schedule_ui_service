@@ -20,7 +20,7 @@ const UserProfile = () => {
             Thông tin người dùng
           </h1>
           <p className="text-gray-500 text-sm sm:text-base mt-2">
-            Quản lý và cập nhật thông tin cá nhân của bạn
+            Quản lý và cập nhật thông tin cá nhân của bạnn
           </p>
         </div>
 

@@ -13,7 +13,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({ onConfirm, onCancel }) => {
     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-sm text-center animate-fade-in">
         <h2 className="text-xl font-semibold mb-2">Xác nhận chỉnh sửa</h2>
-        <p className="text-gray-600 mb-6">Bạn có chắc muốn lưu thay đổi?</p>
+        <p className="text-gray-600 mb-6">Bạn có chắc muốn lưuu thay đổi?</p>
         <div className="flex justify-center gap-4">
           <button
             onClick={onCancel}

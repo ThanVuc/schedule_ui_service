@@ -129,7 +129,7 @@ const RoleListUI = () => {
         id: Date.now(),
         type: "error",
         message: "Hủy thao tác",
-        description: "Không có thay đổi nào được thực hiện.",
+        description: "Không có thay đổi nào được thực hiệnn.",
       });
     }
   };

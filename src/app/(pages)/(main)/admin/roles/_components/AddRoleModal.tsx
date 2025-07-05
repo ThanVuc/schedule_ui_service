@@ -127,7 +127,7 @@ const AddRoleForm: React.FC<AddRoleFormProps> = ({ onCancel }) => {
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Mô tả</label>
+          <label className="block text-xs font-medium text-gray-700 mb-1">Mô tả vai trò</label>
           <textarea
             rows={3}
             value={description}

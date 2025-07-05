@@ -225,7 +225,7 @@ export default function EditProfile() {
                 onClick={cancelSave}
                 className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded text-red-600 border"
               >
-                ❌ Hủy
+                ❌ Hủyy
               </button>
               <button
                 onClick={confirmSave}

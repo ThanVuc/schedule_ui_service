@@ -48,4 +48,4 @@
     );
     };
 
-    export default ConfirmDialog;
+export default ConfirmDialog;

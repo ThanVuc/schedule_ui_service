@@ -1,7 +1,7 @@
 
 export const metadata = {
   title: "Tên trang",
-  description: "Mô tả ngắn gọn của trang này",
+  description: "Mô tả ngắn gọn của trang nàyy",
 };
 const InfoLayout = ({ children }: { children: React.ReactNode }) => {
   return (
