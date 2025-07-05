@@ -1,4 +1,3 @@
-import Sidebar from "./_components/Sidebar";
 
 export const metadata = {
   title: "Tên trang",
@@ -6,8 +5,8 @@ export const metadata = {
 };
 const InfoLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="pl-64 py-8 bg-gray-100 min-h-screen font-sans">
-      <Sidebar />
+    <div className=" py-8 bg-gray-100 min-h-screen font-sans">
+     
       {children}
     </div>
   );

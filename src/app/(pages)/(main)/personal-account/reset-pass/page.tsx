@@ -1,5 +1,5 @@
-
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -109,117 +109,108 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-100 via-white to-pink-100 relative">
-      {/* Main content - offset left = sidebar width, then center content */}
-      <div className="ml-64 flex justify-center items-center min-h-screen px-4">
-        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-10">
-          <h2 className="text-3xl font-bold text-center mb-4">Đặt Lại Mật Khẩu</h2>
-          <p className="text-base text-center text-gray-500 mb-8">
-            Nhập mật khẩu hiện tại của bạn và chọn mật khẩu mới
-          </p>
+    <div className="min-h-screen bg-gradient-to-r from-blue-100 via-white to-pink-100 px-4 py-6 sm:px-6 lg:px-8">
+      <div className="max-w-xl mx-auto bg-white rounded-xl shadow-xl p-5 sm:p-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-center mb-3">Đặt Lại Mật Khẩu</h2>
+        <p className="text-sm text-center text-gray-500 mb-6">
+          Nhập mật khẩu hiện tại của bạn và chọn mật khẩu mới
+        </p>
 
-          <form onSubmit={handleSubmit}>
-            {/* Mật khẩu cũ */}
-            <div className="mb-6">
-              <label className="block text-gray-700 text-lg mb-2">Nhập mật khẩu cũ</label>
-              <div className="relative">
-                <input
-                  type={showOld ? "text" : "password"}
-                  className="w-full border text-base rounded-lg px-5 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  placeholder="Nhập mật khẩu hiện tại"
-                  value={oldPassword}
-                  onChange={(e) => setOldPassword(e.target.value)}
-                />
-                <span
-                  className="absolute right-4 top-3.5 text-gray-400 cursor-pointer"
-                  onClick={() => setShowOld(!showOld)}
-                >
-                  <FontAwesomeIcon icon={showOld ? faEyeSlash : faEye} />
-                </span>
-              </div>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="block text-gray-700 text-sm mb-2">Nhập mật khẩu cũ</label>
+            <div className="relative">
+              <input
+                type={showOld ? "text" : "password"}
+                className="w-full border text-sm rounded-lg px-4 py-2.5 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Nhập mật khẩu hiện tại"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
+              <span
+                className="absolute right-3 top-2.5 text-gray-400 cursor-pointer"
+                onClick={() => setShowOld(!showOld)}
+              >
+                <FontAwesomeIcon icon={showOld ? faEyeSlash : faEye} />
+              </span>
             </div>
-
-            {/* Mật khẩu mới */}
-            <div className="mb-6">
-              <label className="block text-gray-700 text-lg mb-2">Mật Khẩu Mới</label>
-              <div className="relative">
-                <input
-                  type={showNew ? "text" : "password"}
-                  className={`w-full border text-base rounded-lg px-5 py-3 pr-12 focus:outline-none focus:ring-2 ${
-                    passwordError ? "border-red-500 focus:ring-red-400" : "focus:ring-blue-400"
-                  }`}
-                  placeholder="Nhập mật khẩu mới"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
-                <span
-                  className="absolute right-4 top-3.5 text-gray-400 cursor-pointer"
-                  onClick={() => setShowNew(!showNew)}
-                >
-                  <FontAwesomeIcon icon={showNew ? faEyeSlash : faEye} />
-                </span>
-              </div>
-              <p className={`text-sm mt-1 ${passwordError ? "text-red-500" : "text-gray-400"}`}>
-                Mật khẩu phải có ít nhất 8 ký tự, chữ hoa, số và ký tự đặc biệt
-              </p>
-            </div>
-
-            {/* Xác nhận mật khẩu */}
-            <div className="mb-6">
-              <label className="block text-gray-700 text-lg mb-2">Xác nhận lại mật khẩu</label>
-              <div className="relative">
-                <input
-                  type={showConfirm ? "text" : "password"}
-                  className={`w-full border text-base rounded-lg px-5 py-3 pr-12 focus:outline-none focus:ring-2 ${
-                    confirmError ? "border-red-500 focus:ring-red-400" : "focus:ring-blue-400"
-                  }`}
-                  placeholder="Xác nhận lại mật khẩu"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                <span
-                  className="absolute right-4 top-3.5 text-gray-400 cursor-pointer"
-                  onClick={() => setShowConfirm(!showConfirm)}
-                >
-                  <FontAwesomeIcon icon={showConfirm ? faEyeSlash : faEye} />
-                </span>
-              </div>
-              {confirmError && <p className="text-red-500 text-sm mt-1">{confirmError}</p>}
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white rounded-lg py-3 text-lg font-semibold hover:bg-blue-600 transition shadow-md"
-            >
-              Xác Nhận Thay Đổi
-            </button>
-          </form>
-
-          {/* Nút quay lại */}
-          <div className="text-center mt-6">
-            <button
-              type="button"
-              onClick={() => {
-                if (isFormDirty) {
-                  setShowLeaveModal(true);
-                } else {
-                  router.back();
-                }
-              }}
-              className="text-base text-blue-500 hover:underline"
-            >
-              Quay Lại Đăng Nhập
-            </button>
           </div>
 
-          <p className="text-center text-sm text-gray-400 mt-6">
-            Hãy đảm bảo mật khẩu mới của bạn an toàn và duy nhất
-          </p>
+          <div>
+            <label className="block text-gray-700 text-sm mb-2">Mật Khẩu Mới</label>
+            <div className="relative">
+              <input
+                type={showNew ? "text" : "password"}
+                className={`w-full border text-sm rounded-lg px-4 py-2.5 pr-10 focus:outline-none focus:ring-2 ${
+                  passwordError ? "border-red-500 focus:ring-red-400" : "focus:ring-blue-400"
+                }`}
+                placeholder="Nhập mật khẩu mới"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+              <span
+                className="absolute right-3 top-2.5 text-gray-400 cursor-pointer"
+                onClick={() => setShowNew(!showNew)}
+              >
+                <FontAwesomeIcon icon={showNew ? faEyeSlash : faEye} />
+              </span>
+            </div>
+            <p className={`text-xs mt-1 ${passwordError ? "text-red-500" : "text-gray-400"}`}>
+              Mật khẩu phải có ít nhất 8 ký tự, chữ hoa, số và ký tự đặc biệt
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 text-sm mb-2">Xác nhận lại mật khẩu</label>
+            <div className="relative">
+              <input
+                type={showConfirm ? "text" : "password"}
+                className={`w-full border text-sm rounded-lg px-4 py-2.5 pr-10 focus:outline-none focus:ring-2 ${
+                  confirmError ? "border-red-500 focus:ring-red-400" : "focus:ring-blue-400"
+                }`}
+                placeholder="Xác nhận lại mật khẩu"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <span
+                className="absolute right-3 top-2.5 text-gray-400 cursor-pointer"
+                onClick={() => setShowConfirm(!showConfirm)}
+              >
+                <FontAwesomeIcon icon={showConfirm ? faEyeSlash : faEye} />
+              </span>
+            </div>
+            {confirmError && <p className="text-red-500 text-xs mt-1">{confirmError}</p>}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white rounded-lg py-2.5 text-sm font-semibold hover:bg-blue-600 transition shadow"
+          >
+            Xác Nhận Thay Đổi
+          </button>
+        </form>
+
+        <div className="text-center mt-5">
+          <button
+            type="button"
+            onClick={() => {
+              if (isFormDirty) {
+                setShowLeaveModal(true);
+              } else {
+                router.back();
+              }
+            }}
+            className="text-sm text-blue-500 hover:underline"
+          >
+            Quay Lại Đăng Nhập
+          </button>
         </div>
+
+        <p className="text-center text-xs text-gray-400 mt-5">
+          Hãy đảm bảo mật khẩu mới của bạn an toàn và duy nhất
+        </p>
       </div>
 
-      {/* Toasts */}
       <div className="fixed top-6 right-6 z-50 flex flex-col gap-4">
         {toasts.map((toast) => (
           <Toast
@@ -233,12 +224,10 @@ export default function ResetPasswordPage() {
         ))}
       </div>
 
-      {/* Confirm Modal */}
       {isModalOpen && (
         <ConfirmModal onConfirm={handleModalConfirm} onCancel={handleModalCancel} />
       )}
 
-      {/* Leave Confirm Modal */}
       {showLeaveModal && (
         <LeaveConfirmModal
           onStay={() => setShowLeaveModal(false)}
@@ -251,4 +240,3 @@ export default function ResetPasswordPage() {
     </div>
   );
 }
-
