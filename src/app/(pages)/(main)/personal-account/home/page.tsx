@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Sidebar from "../_components/Sidebar";
+
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,8 +13,7 @@ const Dashboard = () => {
   return (
     <div className="flex">
       {/* Sidebar bên trái */}
-      <Sidebar />
-
+   
       {/* Nội dung bên phải */}
       <div className="flex-1 bg-gray-50 min-h-screen px-6 py-8">
         <h1 className="text-2xl font-bold mb-6 text-black">Trang chủ</h1>
