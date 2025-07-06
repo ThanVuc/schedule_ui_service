@@ -96,38 +96,37 @@ const DetailedInformation = ({ userDetailedInfo, onClose }: DetailedInformationP
                     </Avatar>
                     <p className="text-center font-bold"> {userDetailedInfo.name}</p>
                 </div>
-                <div className="space-y-4 text-sm w-[480px]">
+                <div className="space-y-3 text-sm w-full max-w-[480px] mx-auto">
                     <div className="flex justify-center">
-                        <p className="capitalize p-1 bg-[#F1F5F9] rounded-xl">{userDetailedInfo.gender}-{getAge(userDetailedInfo.date || "")} tuổi</p>
+                        <p className="capitalize p-1 bg-[#F1F5F9] rounded-xl text-xs md:text-sm">{userDetailedInfo.gender} - {getAge(userDetailedInfo.date || "")} tuổi</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1">
+                    <div className="flex flex-col sm:flex-row justify-between gap-1 p-2 border-b">
                         <p>🎂 Ngày sinh:</p>
-                        <p>{formatDate(userDetailedInfo.date || "")}</p>
+                        <p className="break-words text-right">{formatDate(userDetailedInfo.date || "")}</p>
                     </div>
-
-                    <div className="flex justify-between p-3 border-b-1">
+                    <div className="flex flex-col sm:flex-row justify-between gap-1 p-2 border-b">
                         <p>📧 Email:</p>
-                        <p>{userDetailedInfo.email}</p>
+                        <p className="break-words text-right">{userDetailedInfo.email}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1">
+                    <div className="flex flex-col sm:flex-row justify-between gap-1 p-2 border-b">
                         <p>🆔 Vai trò:</p>
-                        <p> {userDetailedInfo.role.length > 0 ? userDetailedInfo.role.map(formatRole).join(", ") : "Không có vai trò"}</p>
+                        <p className="break-words text-right">{userDetailedInfo.role.length > 0 ? userDetailedInfo.role.map(formatRole).join(", ") : "Không có vai trò"}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1">
+                    <div className="flex flex-col sm:flex-row justify-between gap-1 p-2 border-b">
                         <p>🟢 Trạng thái:</p>
-                        <p> {userDetailedInfo.status ? "Hoạt động" : "bị khoá"}</p>
+                        <p className="break-words text-right">{userDetailedInfo.status ? "Hoạt động" : "Bị khoá"}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1">
-                        <p>🕐 Thời gian đăng nhập:</p>
-                        <p> {formatTimeAgo(userDetailedInfo.timestamp || "")}</p>
+                    <div className="flex flex-col sm:flex-row justify-between gap-1 p-2 border-b">
+                        <p>🕐 Đăng nhập:</p>
+                        <p className="break-words text-right">{formatTimeAgo(userDetailedInfo.timestamp || "")}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1">
-                        <p>🕐 Thời gian cập nhật lần cuối:</p>
-                        <p> {formatTimeAgo(userDetailedInfo.updatelast || "")}</p>
+                    <div className="flex flex-col sm:flex-row justify-between gap-1 p-2 border-b">
+                        <p>🕐 Cập nhật:</p>
+                        <p className="break-words text-right">{formatTimeAgo(userDetailedInfo.updatelast || "")}</p>
                     </div>
-                    <div className="flex justify-between p-3 border-b-1">
+                    <div className="flex flex-col sm:flex-row justify-between gap-1 p-2 border-b">
                         <p>📖 Mô tả</p>
-                        <p>{userDetailedInfo.bio || "Chưa có tiểu sử"}</p>
+                        <p className="break-words text-right">{userDetailedInfo.bio || "Chưa có tiểu sử"}</p>
                     </div>
                 </div>
             </div>

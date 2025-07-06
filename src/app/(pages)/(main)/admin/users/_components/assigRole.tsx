@@ -29,7 +29,7 @@ const AssigRole = ({ onClose, onAssig, userAssigRole }: AssigRoleProps) => {
         }));
     };
 
-    return (<div className="bg-white w-full max-w-[600px] h-full max-h-[600px] border-2 border-[#bababa] 
+    return (<div className="bg-white md:w-150 w-full max-w-[600px] h-full max-h-[600px] border-2 border-[#bababa] 
     shadow-lg rounded-lg overflow-y-auto">
         <div className="border-2 pb-6">
             <div className="m-6">

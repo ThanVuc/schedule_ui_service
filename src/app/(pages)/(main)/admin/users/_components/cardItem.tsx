@@ -65,53 +65,65 @@ const CardItem = ({ userCardItem, onClick, onClickLock, onClickAssigRole }: Card
         return colors[index];
     };
 
-    const avatarBg = getColorById(userCardItem.id); // Truyền user.id từ ListUserPages
+    const avatarBg = getColorById(userCardItem.id);
 
 
 
     return (<div>
-        <Card className="hover:bg-[#edf0f5] transform " onClick={onClick}>
+        <Card className="hover:bg-[#f3f4f8] transform " onClick={onClick}>
             <div className="flex justify-between px-2" >
                 <div className="flex items-center" >
-                    <Avatar className={`p-5 ${avatarBg} text-white`}>
+                    <Avatar className={`p-3 md:p-5 ${avatarBg} text-white`}>
                         <AvatarFallback>{getInitials(userCardItem.name)}</AvatarFallback>
                     </Avatar>
-                    <div className="ml-4">
-                        <h1>{userCardItem.name}</h1>
-                        <h2 className="text-sm text-gray-500">{userCardItem.email}</h2>
-                        <div className=" flex items-center space-x-2">
+                    <div className="ml-2 md:ml-4">
+                        <h1 className="text-base md:text-lg font-semibold">{userCardItem.name}</h1>
+                        <h2 className="text-sm text-gray-500 ">{userCardItem.email}</h2>
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
                             <div className="rounded-xl text-[#3B82F6] bg-[#EBF8FF] font-medium text-xs px-1 flex items-center w-fit">
-                                {isAdmin(userCardItem.role) && <Crown size={12} className="fill-amber-400 text-amber-900" />}
+                                {isAdmin(userCardItem.role)}
                                 {userCardItem.role.length > 0 ? formatRole(userCardItem.role?.[0]) : "không có vai trò"}
                             </div>
                             <div>
-                                <span className="text-xs text-gray-400">Hoạt động {formatTimeAgo(userCardItem.timestamp)}</span>
-
+                                <span className="text-xs text-gray-400 block md:inline">Hoạt động {formatTimeAgo(userCardItem.timestamp)}</span>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div className="flex items-center space-x-3" >
+                <div
+                    className="flex flex-row items-center gap-2 md:gap-3 md:mt-0 self-center"
+                >
                     <span
-                        className={`flex items-center justify-center h-fit px-2 py-1 rounded-md text-xs font-medium border ${userCardItem.status
-                            ? "bg-[#D1FAE5] text-[#065F46] border-[#10B981]"
-                            : "bg-[#FEE2E2] text-[#991B1B] border-[#EF4444]"
+                        className={`flex text-nowrap items-center justify-center h-fit px-2 py-1 rounded-md text-xs font-medium border transition-all duration-150
+                            ${userCardItem.status
+                                ? "bg-[#D1FAE5] text-[#065F46] border-[#10B981]"
+                                : "bg-[#FEE2E2] text-[#991B1B] border-[#EF4444]"
                             }`}
                     >
                         {userCardItem.status ? "Hoạt Động" : "Bị Khóa"}
                     </span>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#10B981] " onClick={(e) => {
-                        e.stopPropagation()
-                        onClickAssigRole();
-                    }}>
-                        <Shield />
+                    <button
+                        className="bg-[#F3F4F6] p-2 rounded-full hover:bg-[#10B981]/90 hover:text-white transition-all duration-150 shadow-sm"
+                        title="Phân quyền"
+                        onClick={e => {
+                            e.stopPropagation();
+                            onClickAssigRole();
+                        }}
+                    >
+                        <Shield size={18} />
                     </button>
-                    <button className="bg-[#F3F4F6] p-1 rounded-md hover:bg-[#EF4444]" onClick={(e) => {
-                        e.stopPropagation();
-                        onClickLock();
-                    }}>
-                        {userCardItem.lock ? <LockKeyhole /> : <LockKeyholeOpen />}
+                    <button
+                        className="bg-[#F3F4F6] p-2 rounded-full hover:bg-[#EF4444]/90 hover:text-white transition-all duration-150 shadow-sm"
+                        title={userCardItem.lock ? "Mở khóa" : "Khóa"}
+                        onClick={e => {
+                            e.stopPropagation();
+                            onClickLock();
+                        }}
+                    >
+                        {userCardItem.lock
+                            ? <LockKeyhole size={18} />
+                            : <LockKeyholeOpen size={18} />}
                     </button>
                 </div>
             </div>

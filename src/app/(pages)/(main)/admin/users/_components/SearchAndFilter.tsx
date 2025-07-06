@@ -12,22 +12,22 @@ const handleFilterChange = (value: string) => {
 const SearchAndFilter = () => {
     const itemComboBox = [
         { value: "1", label: "Tất cả trạng thái" },
-        { value: "2", label: "Quản trị viên" },
-        { value: "3", label: "Người dùng" },
+        { value: "2", label: "Bị Khoá" },
+        { value: "3", label: "Không bị khoá" },
     ];
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
 
     return (
-        <div className="flex w-2/5 mt-4 ">
-            <Input className="mr-3" placeholder="Tìm theo tên hoặc email..." />
+        <div className="md:flex w-3/5 mt-4 xs:flex-col">
+            <Input className="md:mr-3 " placeholder="Tìm theo tên hoặc email..." />
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                     <Button
                         variant="outline"
                         role="combobox"
                         aria-expanded={open}
-                        className="w-[200px] justify-between hidden md:block"
+                        className="w-[200px] justify-between md:flex my-2 md:my-0"
                     >
                         {value
                             ? itemComboBox.find((item) => item.value === value)?.label
