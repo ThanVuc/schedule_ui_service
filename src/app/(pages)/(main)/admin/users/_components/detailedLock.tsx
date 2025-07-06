@@ -33,7 +33,7 @@ const DetailedLock = ({ onClose, userDetailedLock, onLock, setNotification }: De
                 </p>
             </div>
             <div >
-                <p className="text-center mb-4">{userDetailedLock.lock ? "Bạn xác nhận muốn mở khoá người dùng này" : "Bạn xác nhận muốn khoá người dùng này"}</p>
+                <p className="text-center mb-4 p-4">{userDetailedLock.lock ? "Bạn xác nhận muốn mở khoá người dùng này" : "Bạn xác nhận muốn khoá người dùng này"}</p>
             </div>
             <div className="flex justify-around">
                 <button

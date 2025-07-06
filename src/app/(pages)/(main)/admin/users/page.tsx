@@ -201,18 +201,18 @@ const ListUserPages = () => {
             timestamp: "2025-05-17 22:25:00",
             date: "2004-12-25",
             updatelast: "2025-04-17 22:25:00",
-            bio: "tôi là ai",
+            bio: "tôi là ai tôi là aitôi là aitôi là aitôi là aitôi là aitôi là aitôi là aitôi là ai tô",
         },
 
     ])
-    const itemsPerPage = 6;
+    const itemsPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
     const currentUsers = listUser.slice( // lấy danh sách người dùng hiện tại
         (currentPage - 1) * itemsPerPage, // bắt đầu từ trang hiện tại
         currentPage * itemsPerPage
     );
     return (
-        <div className="flex-1 px-4 py-6 md:px-7 md:mt-7 pb-10">
+        <div className="flex-1 px-4 md:px-7 pb-10">
             {/* thông báo */}
             <NotificationOptimize notification={notification} setNotification={setNotification} />
             {/* tiêu đề trang */}
@@ -220,6 +220,7 @@ const ListUserPages = () => {
             {/* tìm kiếm và lọc người dùng */}
             <SearchAndFilter />
             {/* list user */}
+            <AdminCount />
             <ListUser currentUsers={currentUsers}
                 setSelectedUser={setSelectedUser}
                 setIsModalOpen={setIsModalOpen}
@@ -260,9 +261,7 @@ const ListUserPages = () => {
                     />
                 </div>
             </div>
-            <AdminCount
-                listUser={listUser}
-            />
+
         </div>
     );
 };

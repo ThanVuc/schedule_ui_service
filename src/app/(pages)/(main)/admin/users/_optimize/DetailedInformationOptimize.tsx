@@ -19,10 +19,10 @@ const DetailedInformationOptimize = ({ setIsModalOpen, selectedUser }: ListUserP
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [setIsModalOpen]);
     return (
-        <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30"
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#080808]/30 px-2"
             onClick={() => setIsModalOpen(false)}
         >
-            <div className="relative"
+            <div className="relative w-full max-w-md md:max-w-xl p-2 md:p-6"
                 onClick={e => e.stopPropagation()}
             >
                 <DetailedInformation

@@ -15,7 +15,7 @@ interface PaginationComponentProps {
     listUser: UserModel[];
     onPageChange: (page: number) => void;
 }
-const itemsPerPage = 6;
+const itemsPerPage = 10;
 const PaginationComponent = ({ currentPage, onPageChange, listUser }: PaginationComponentProps) => {
     const totalPages = Math.ceil(listUser.length / itemsPerPage);
     const getPageNumbers = (current: number, total: number, maxVisible: number = 5) => {
