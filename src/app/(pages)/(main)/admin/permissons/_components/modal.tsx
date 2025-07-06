@@ -1,4 +1,4 @@
-// components/ReusableModal.tsx
+"use client";
 import React from "react";
 import {
   Dialog,
@@ -20,6 +20,7 @@ type Props = {
   onSubmit?: () => void;
   submitText?: string;
   cancelText?: string;
+  color?: string;
 };
 
 export default function ReusableModal({
@@ -30,18 +31,18 @@ export default function ReusableModal({
   onSubmit,
   submitText = "Xác nhận",
   cancelText = "Hủy",
-  
+  color = "text-gray-800",
 }: Props) {
   return (
-    <Dialog >
+    <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="sm:max-w-[700px]">
+      <DialogContent className="!w-[100vw] sm:max-w-[700px]">
         <DialogHeader>
           <DialogTitle>
-            <div className="text-center text-3xl "> <h1> {title}</h1></div> 
-           
-            
-            </DialogTitle>
+            <div className="text-center text-2xl sm:text-3xl">
+              <h1 className={color}>{title}</h1>
+            </div>
+          </DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
         <div className="py-4">{children}</div>
@@ -49,9 +50,7 @@ export default function ReusableModal({
           <DialogClose asChild>
             <Button variant="outline">{cancelText}</Button>
           </DialogClose>
-          {onSubmit && (
-            <Button onClick={onSubmit}>{submitText}</Button>
-          )}
+          {onSubmit && <Button onClick={onSubmit}>{submitText}</Button>}
         </DialogFooter>
       </DialogContent>
     </Dialog>
