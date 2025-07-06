@@ -37,3 +37,44 @@ Check the render method of `Header`.
 ID: a6407a94-7dfe-432f-8ce7-d6dbb47d2d0a | Time: 2025-06-29T11:22:56.943Z | Name: ReferenceError | Cause: FontAwesomeIcon is not defined
 ID: e087a6ed-6d8f-4759-8536-04420df33863 | Time: 2025-06-29T11:28:31.985Z | Name: ReferenceError | Cause: faUser is not defined
 ID: bd7bd21e-9453-4d9c-8843-1132382005cd | Time: 2025-06-29T11:28:35.715Z | Name: ReferenceError | Cause: faUser is not defined
+ID: e4a52771-9863-4ba0-b6d1-d6dcf26c6412 | Time: 2025-07-06T07:52:33.460Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleItem`.
+ID: fdf07d81-60e0-44b5-bc07-0396801141fc | Time: 2025-07-06T08:12:39.241Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `EditRoleModal`.
+ID: 1e777f4c-a98d-431b-9e29-9b7dfec492fe | Time: 2025-07-06T08:13:46.710Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleItem`.
+ID: 3bc71517-ab08-4b17-b322-fa955e03bc7e | Time: 2025-07-06T08:14:57.331Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
+ID: 561c52e2-c227-4859-89dc-cad5e0b2ffe3 | Time: 2025-07-06T08:29:08.967Z | Name: ReferenceError | Cause: Sidebar is not defined
+ID: 5b169437-07ea-442e-82e7-f2f1364c3f8c | Time: 2025-07-06T08:40:50.992Z | Name: ReferenceError | Cause: kfjei is not defined
+ID: 4e74174f-d382-467b-881e-93c3543b648e | Time: 2025-07-06T08:42:54.516Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
+ID: 90d1e430-b66f-447d-ad78-dd3ace9cc17d | Time: 2025-07-06T09:40:11.680Z | Name: ReferenceError | Cause: WatchPermissionModal is not defined
+ID: cfa3ce64-10b4-47a5-8dc6-c525a3d3b2fa | Time: 2025-07-06T09:40:17.516Z | Name: ReferenceError | Cause: note is not defined
+ID: aa91570f-a78c-4d9c-aae5-02f0d24c2d37 | Time: 2025-07-06T09:40:25.762Z | Name: ReferenceError | Cause: note is not defined
+ID: 856646b5-081a-42b5-af85-e7e343d146f7 | Time: 2025-07-06T09:40:26.881Z | Name: ReferenceError | Cause: note is not defined
+ID: 2de6251e-942a-48bf-9e40-b6bfd5aa3e3d | Time: 2025-07-06T09:41:27.826Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
+ID: 6b236dd4-fb6b-4111-9f65-dcf8aa462acf | Time: 2025-07-06T10:18:25.197Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RolesList`.
+ID: 4efd2236-7db3-4f5f-9f84-20a13d4b144a | Time: 2025-07-06T10:24:16.550Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleItem`.
+ID: 8a5945f6-bc30-4617-b5e7-249cfd22c2c9 | Time: 2025-07-06T10:28:30.994Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleItem`.
+ID: 41e7fa44-24cc-4a93-8c1b-7793d8559f14 | Time: 2025-07-06T10:34:22.973Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleItem`.
+ID: a84a77c7-d036-4dbc-acca-a9ed74d3c0da | Time: 2025-07-06T10:37:54.017Z | Name: Error | Cause: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `RoleItem`.
+ID: cd445e84-40fd-4c8f-ab08-64f52e44947f | Time: 2025-07-06T11:33:42.167Z | Name: ReferenceError | Cause: mockPermissions is not defined
+ID: a9146a7c-26c7-479f-9865-6fef4683ec30 | Time: 2025-07-06T11:47:31.041Z | Name: ReferenceError | Cause: color is not defined
