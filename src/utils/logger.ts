@@ -13,7 +13,6 @@ interface LogData {
 
 // Đường dẫn đến thư mục logs trong src/components/logs
 const logDir = path.join(process.cwd(), 'src', 'logs');
-const logFilePrefix = path.join(logDir, 'errors');
 const maxFileSize = 1 * 1024 * 1024; // 1MB
 const maxFilesBeforeZip = 4; // Nén khi có đủ 4 file
 
