@@ -31,7 +31,7 @@ const AddRoleModal: React.FC<AddRoleModalProps> = ({ show, onClose, onSave }) =>
   if (!show) return null;
 
   return (
-    <Curtain>
+    <Curtain onClose={onClose}>
       <div className="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-6 animate-fadeIn">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">Thêm vai trò mới</h2>

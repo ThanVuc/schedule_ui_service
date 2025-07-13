@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import DetailedLock from "../_components/detailedLock";
 import { NotificationModel } from "../model/notification";
 import { UserModel } from "../model/user";
+import { Curtain } from "@/components/common/Curtain";
 interface DetailedLockOptimizeProps {
 
     selectedUser: UserModel;
@@ -30,24 +31,24 @@ const DetailedLockOptimize = ({ setIsModalLockOpen, selectedUser, setNotificatio
         setIsModalLockOpen(false);
     };
     return (
-        <div className="fixed w-screen h-screen flex justify-center items-center z-50 top-0 left-0 bg-[#080808]/30"
-            onClick={() => setIsModalLockOpen(false)}
+        <div >
+            <Curtain onClose={() => setIsModalLockOpen(false)}>
+                <div className="relative"
+                    onClick={e => e.stopPropagation()}
+                >
+                    <DetailedLock
+                        onClose={() => setIsModalLockOpen(false)}
+                        onLock={() => handleLockUser(selectedUser.id)}
+                        userDetailedLock={{
+                            id: selectedUser.id,
+                            name: selectedUser.name,
+                            lock: !selectedUser.status
+                        }}
+                        setNotification={setNotification}
+                    />
+                </div>
+            </Curtain>
 
-        >
-            <div className="relative"
-                onClick={e => e.stopPropagation()}
-            >
-                <DetailedLock
-                    onClose={() => setIsModalLockOpen(false)}
-                    onLock={() => handleLockUser(selectedUser.id)}
-                    userDetailedLock={{
-                        id: selectedUser.id,
-                        name: selectedUser.name,
-                        lock: !selectedUser.status
-                    }}
-                    setNotification={setNotification}
-                />
-            </div>
         </div>
     );
 }

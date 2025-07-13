@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import AssigRole from "../_components/assigRole";
 import { NotificationModel } from "../model/notification";
 import { UserModel } from "../model/user";
+import { Curtain } from "@/components/common/Curtain";
 
 interface AssigRoleOptimizeProps {
     selectedUser: UserModel;
@@ -29,24 +30,23 @@ const AssigRoleOptimize = ({
     };
 
     return (
-        <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#080808]/30 px-2"
-            onClick={() => setIsModalAssigRoleOpen(false)}
-        >
-            <div
-                className="relative"
-                onClick={e => e.stopPropagation()}
-            >
-                <AssigRole
-                    onClose={() => setIsModalAssigRoleOpen(false)}
-                    onAssig={handleAssigRoleUser}
-                    userAssigRole={{
-                        id: selectedUser.id,
-                        name: selectedUser.name,
-                        role: selectedUser.role,
-                    }}
-                />
-            </div>
+        <div>
+            <Curtain onClose={() => setIsModalAssigRoleOpen(false)}>
+                <div
+                    className="relative"
+                    onClick={e => e.stopPropagation()}
+                >
+                    <AssigRole
+                        onClose={() => setIsModalAssigRoleOpen(false)}
+                        onAssig={handleAssigRoleUser}
+                        userAssigRole={{
+                            id: selectedUser.id,
+                            name: selectedUser.name,
+                            role: selectedUser.role,
+                        }}
+                    />
+                </div>
+            </Curtain>
         </div>
     );
 };

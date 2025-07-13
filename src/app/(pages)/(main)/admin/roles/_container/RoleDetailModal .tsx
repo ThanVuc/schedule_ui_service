@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CheckCircleIcon } from "@/components/icon/checkCircle" 
+import { CheckCircleIcon } from "@/components/icon/checkCircle"
 import { Curtain } from "@/components/common/Curtain";
 
 interface RoleDetailModalProps {
@@ -48,8 +48,8 @@ const RoleDetailModal: React.FC<RoleDetailModalProps> = ({ show, role, onClose }
   }
 
   return (
-    <Curtain>
-        <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 animate-fadeIn">
+    <Curtain onClose={onClose}>
+      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 animate-fadeIn">
         <h2 className="text-2xl font-bold text-center mb-6">Chi tiết vai trò</h2>
 
         <div className="space-y-3 mb-4">
@@ -101,7 +101,7 @@ const RoleDetailModal: React.FC<RoleDetailModalProps> = ({ show, role, onClose }
           </button>
         </div>
       </div>
-    </Curtain>      
+    </Curtain>
   );
 };
 
