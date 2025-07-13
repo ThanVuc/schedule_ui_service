@@ -5,22 +5,21 @@
 
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUserShield,
-  faUser,
-  faEye,
-  faEdit,
-  faTrash,
-  faPlus,
-  faBan,
-} from "@fortawesome/free-solid-svg-icons";
+  UserShieldIcon,
+  UserIcon,
+  EyeIcon,
+  PencilIcon,
+  TrashIcon,
+  PlusIcon,
+  BanIcon,
+} from "@/components/icon";
 import ConfirmDeactivateModal from "./_components/ConfirmDeactivateModal";
 import ConfirmDeleteModal from "./_components/ConfirmDeleteModal";
-import RoleDetailModal from "@/app/(pages)/(main)/admin/roles/_components/RoleDetailModal ";
-import AddRoleModal from "./_components/AddRoleModal";
-import EditRoleModal from "@/app/(pages)/(main)/admin/roles/_components/EditRoleModal";
-import Toast, { ToastType } from "@/components/Toast";
+import RoleDetailModal from "@/app/(pages)/(main)/admin/roles/_container/RoleDetailModal ";
+import AddRoleModal from "./_container/AddRoleModal";
+import EditRoleModal from "./_container/EditRoleModal";
+import Toast, { ToastProps } from "@/components/Toast";
 
 const RoleListUI = () => {
   const searchParams = useSearchParams();
@@ -46,7 +45,7 @@ const RoleListUI = () => {
 
   const [deactivatedRoleIds, setDeactivatedRoleIds] = useState<number[]>([]);
   const [deletedRoleIds, setDeletedRoleIds] = useState<number[]>([]);
-  const [toast, setToast] = useState<ToastType | null>(null);
+  const [toast, setToast] = useState<ToastProps | null>(null);
 
   const defaultRoles = [
     {
@@ -56,7 +55,7 @@ const RoleListUI = () => {
       labelColor: "bg-red-100 text-red-600",
       description: "Toàn quyền truy cập, phân quyền, kiểm soát hệ thống",
       count: 5,
-      icon: <FontAwesomeIcon icon={faUserShield} className="w-5 h-5 text-black" />,
+      icon: <UserShieldIcon className="w-5 h-5 text-black" />,
     },
     {
       id: 2,
@@ -65,7 +64,7 @@ const RoleListUI = () => {
       labelColor: "bg-green-100 text-green-600",
       description: "Người dùng cơ bản",
       count: 128,
-      icon: <FontAwesomeIcon icon={faUser} className="w-5 h-5 text-black" />,
+      icon: <UserIcon className="w-5 h-5 text-black" />,
     },
   ];
 
@@ -78,7 +77,7 @@ const RoleListUI = () => {
           labelColor: "bg-blue-100 text-blue-600",
           description: newDesc || "Không có mô tả",
           count: 0,
-          icon: <FontAwesomeIcon icon={faUserShield} className="w-5 h-5 text-black" />,
+          icon: <UserShieldIcon className="w-5 h-5 text-black" />,
         },
         ...defaultRoles,
       ]
@@ -94,6 +93,7 @@ const RoleListUI = () => {
           type: "success",
           message: "Kích hoạt thành công",
           description: "Vai trò đã được kích hoạt trở lại.",
+          onClose: () => setToast(null),
         });
       } else {
         setDeactivatedRoleIds((prev) => [...prev, selectedRoleId]);
@@ -102,15 +102,9 @@ const RoleListUI = () => {
           type: "success",
           message: "Vô hiệu hóa thành công",
           description: "Vai trò đã được vô hiệu hóa.",
+          onClose: () => setToast(null),
         });
       }
-    } else {
-      setToast({
-        id: Date.now(),
-        type: "error",
-        message: "Hủy thao tác",
-        description: "Không có thay đổi nào được thực hiện.",
-      });
     }
   };
 
@@ -123,13 +117,7 @@ const RoleListUI = () => {
         type: "success",
         message: "Xóa thành công",
         description: "Vai trò đã được xóa khỏi hệ thống.",
-      });
-    } else {
-      setToast({
-        id: Date.now(),
-        type: "error",
-        message: "Hủy thao tác",
-        description: "Không có thay đổi nào được thực hiệnn.",
+        onClose: () => setToast(null),
       });
     }
   };
@@ -149,7 +137,8 @@ const RoleListUI = () => {
             onClick={() => setAddModalOpen(true)}
             className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm flex items-center justify-center gap-2 transition"
           >
-            <FontAwesomeIcon icon={faPlus} className="w-4 h-4" /> Thêm
+            <PlusIcon className="w-4 h-4" />
+            Thêm vai trò
           </button>
         </div>
 
@@ -198,7 +187,8 @@ const RoleListUI = () => {
                       }}
                       className="w-full sm:w-[7.5rem] px-2.5 py-1.5 border rounded text-gray-700 text-xs flex items-center justify-center gap-1 hover:bg-gray-100 transition"
                     >
-                      <FontAwesomeIcon icon={faEye} className="w-4 h-4" /> Xem
+                      <EyeIcon className="w-4 h-4" />
+                      Chi tiết
                     </button>
                     <button
                       onClick={() => {
@@ -207,7 +197,8 @@ const RoleListUI = () => {
                       }}
                       className="w-full sm:w-[7.5rem] px-2.5 py-1.5 rounded bg-blue-600 text-white text-xs flex items-center justify-center gap-1 hover:bg-blue-700 transition"
                     >
-                      <FontAwesomeIcon icon={faEdit} className="w-4 h-4" /> Sửa
+                      <PencilIcon className="w-4 h-4" />
+                      Chỉnh sửa
                     </button>
                     <button
                       onClick={() => {
@@ -220,7 +211,7 @@ const RoleListUI = () => {
                           : "bg-yellow-500 hover:bg-yellow-600"
                       }`}
                     >
-                      <FontAwesomeIcon icon={faBan} className="w-4 h-4" />
+                      <BanIcon className="w-4 h-4" />
                       {isDeactivated ? "Kích hoạt" : "Vô hiệu hóa"}
                     </button>
                     <button
@@ -231,7 +222,8 @@ const RoleListUI = () => {
                       }}
                       className="w-full sm:w-[7.5rem] px-2.5 py-1.5 rounded bg-red-600 text-white text-xs flex items-center justify-center gap-1 hover:bg-red-700 transition"
                     >
-                      <FontAwesomeIcon icon={faTrash} className="w-4 h-4" /> Xóa
+                      <TrashIcon className="w-4 h-4" />
+                      Xóa
                     </button>
                   </div>
                 </div>
@@ -239,7 +231,6 @@ const RoleListUI = () => {
             })}
         </div>
 
-        {/* Modal và Toast */}
         <ConfirmDeactivateModal
           show={modalOpen}
           onClose={handleDeactivate}
@@ -258,12 +249,36 @@ const RoleListUI = () => {
           onClose={() => setDetailModalOpen(false)}
         />
 
-        <AddRoleModal show={addModalOpen} onClose={() => setAddModalOpen(false)} />
+        <AddRoleModal show={addModalOpen} 
+        onClose={() => setAddModalOpen(false)} 
+        onSave={() => {
+          setAddModalOpen(false);
+          setToast({
+            id: Date.now(),
+            type: "success",
+            message: "Thêm vai trò thành công",
+            description: "Vai trò mới đã được thêm vào danh sách.",
+            onClose: () => setToast(null),
+          });
+        }}  
+          />
 
         <EditRoleModal
           show={editModalOpen}
           roleId={editRoleId}
-          onClose={() => setEditModalOpen(false)}
+          onClose={() => {
+            setEditModalOpen(false);
+          }}
+          onSave={() => {
+            setEditModalOpen(false);
+            setToast({
+              id: Date.now(),
+              type: "success",
+              message: "Chỉnh sửa thành công",
+              description: "Các thay đổi đã được lưu!",
+              onClose: () => setToast(null),
+            });
+          }}
         />
 
         {toast && (

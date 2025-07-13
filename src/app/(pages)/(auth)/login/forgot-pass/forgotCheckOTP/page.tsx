@@ -1,5 +1,5 @@
 import React from 'react'
-import OTPInput from '../../../../../components/ui/otp/otp'
+import OTPInput from '../../../../../../components/ui/otp/otp'
 
 export default function page() {
     return (

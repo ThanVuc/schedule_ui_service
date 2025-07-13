@@ -2,8 +2,8 @@
   "use client";
 
   import React from "react";
-  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-  import { faTrash } from "@fortawesome/free-solid-svg-icons";
+  import { TrashIcon } from "@/components/icon";
+import { Curtain } from "@/components/common/Curtain";
 
   interface Props {
     show: boolean;
@@ -15,11 +15,11 @@
     if (!show) return null;
 
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/10">
+      <Curtain>
         <div className="bg-white rounded-lg shadow-lg max-w-sm w-full p-6">
           <div className="flex justify-center mb-4">
             <div className="bg-red-100 p-4 rounded-full">
-              <FontAwesomeIcon icon={faTrash} className="w-6 h-6 text-red-500" />
+              <TrashIcon />
             </div>
           </div>
           <h2 className="text-lg font-bold text-center text-red-600">Xác nhận xóa</h2>
@@ -41,7 +41,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </Curtain>
     );
   };
 
