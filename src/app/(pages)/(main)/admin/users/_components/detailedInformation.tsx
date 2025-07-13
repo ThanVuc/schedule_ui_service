@@ -36,7 +36,6 @@ const getAge = (date: string) => {
     }
     return age.toString();
 };
-// lấy dd/MM/YYYY
 const formatDate = (date: string) => {
     if (!date) return "N/A";
     const parsedDate = new Date(date);
@@ -46,7 +45,6 @@ const formatDate = (date: string) => {
     const year = parsedDate.getFullYear();
     return `${day}/${month}/${year}`;
 };
-// chuyển thời gian
 const formatTimeAgo = (timestamp: string) => {
     const now = new Date();
     const time = new Date(timestamp);
@@ -59,7 +57,6 @@ const formatTimeAgo = (timestamp: string) => {
     if (diff < 31104000) return `${Math.floor(diff / 2592000)} tháng trước`;
     return `${Math.floor(diff / 31104000)} năm trước`;
 };
-// fomat role
 const formatRole = (r: string) => {
     switch (r.toLowerCase()) {
         case "admin":
@@ -124,9 +121,9 @@ const DetailedInformation = ({ userDetailedInfo, onClose }: DetailedInformationP
                         <p>🕐 Cập nhật:</p>
                         <p className="break-words text-right">{formatTimeAgo(userDetailedInfo.updatelast || "")}</p>
                     </div>
-                    <div className="flex flex-col sm:flex-row justify-between gap-1 p-2 border-b">
+                    <div className="flex flex-col justify-between gap-1 p-2 border-b">
                         <p>📖 Mô tả</p>
-                        <p className="break-words text-right">{userDetailedInfo.bio || "Chưa có tiểu sử"}</p>
+                        <p className="break-words">{userDetailedInfo.bio || "Chưa có tiểu sử"}</p>
                     </div>
                 </div>
             </div>

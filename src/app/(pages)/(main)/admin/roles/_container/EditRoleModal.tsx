@@ -27,7 +27,7 @@ const EditRoleModal: React.FC<EditRoleModalProps> = ({ show, roleId, onClose, on
   if (!show) return null;
 
   return (
-    <Curtain>
+    <Curtain onClose={onClose}>
       <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl px-4 sm:px-6 py-6 mx-4 sm:mx-auto animate-fadeIn">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">Chỉnh sửa vai trò</h2>

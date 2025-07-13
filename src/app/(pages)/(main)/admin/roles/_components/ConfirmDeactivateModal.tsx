@@ -22,7 +22,7 @@ const ConfirmDeactivateModal: React.FC<Props> = ({ show, onClose, isReactivate }
   const actionBgColor = isReactivate ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700";
 
   return (
-    <Curtain>
+    <Curtain onClose={onClose}>
       <div className="bg-white rounded-lg shadow-lg max-w-sm w-full p-6">
         <h2 className={`text-lg font-bold text-center ${isReactivate ? "text-green-600" : "text-red-600"}`}>
           {title}
