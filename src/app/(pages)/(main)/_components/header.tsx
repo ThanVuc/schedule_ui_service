@@ -1,13 +1,18 @@
+
 "use client";
 
 import {
-  Popover, PopoverContent, PopoverTrigger,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
 } from "@/components/ui/popover";
-
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
-  Bell, LogOut, Search, User2,
+  Bell,
+  LogOut,
+  Search,
+  User2,
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
@@ -16,7 +21,6 @@ import {
   faLock,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface HeaderProps {
@@ -36,6 +40,7 @@ const menuItems = [
 
 export default function Header({
   userName,
+  userRole,
   siteName = "Tên Website",
   logoUrl,
   avatarUrl,
@@ -44,41 +49,41 @@ export default function Header({
     alert("Đăng xuất thành công!");
   };
 
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const dropdownAnimation =
     "animate-in fade-in zoom-in-95 duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:zoom-out-95";
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   return (
-    <div className="h-16 w-full z-999">
-      <div className="fixed h-16 w-full flex items-center justify-between  bg-gray-50 border-b border-gray-200 shadow-sm">
+    <div className="h-16 w-full z-100">
+      <div className="fixed h-16 w-full flex items-center justify-between px-4 sm:px-6 bg-gray-50 border-b border-gray-200 shadow-sm z-50">
         {/* Logo */}
-        <Link href="/" className="flex items-center ml-4.5 gap-3 hover:opacity-80">
+        <Link href="/" className="flex items-center gap-2 min-w-0">
           <img
             src={logoUrl}
             alt="Logo"
             className="h-8 w-8 rounded-full bg-white"
           />
-          <span className="text-lg font-semibold italic text-gray-800">
+          <span className="text-sm sm:text-base font-semibold italic text-gray-800 whitespace-nowrap">
             {siteName}
           </span>
         </Link>
 
         {/* Right Section */}
-        <div className="flex  items-center gap-2 md:gap-4 ">
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-shrink-0">
           {/* Search */}
-          <div className="flex items-center  bg-white border  border-gray-300 rounded px-3 h-10 w-[220px]">
-            <Search className="w-5 h-5 text-gray-500 mr-2" />
+          <div className="flex hidden sm:flex  items-center bg-white border border-gray-300 rounded px-2 h-10 min-w-0 w-[140px] sm:w-[200px]">
+            <Search className="w-4 h-4 text-gray-500 mr-1" />
             <Input
               type="text"
               placeholder="Tìm kiếm..."
-              className="h-8 border-none text-sm focus-visible:ring-0"
+              className="h-8 border-none text-sm focus-visible:ring-0 p-0 placeholder:text-xs w-full"
             />
           </div>
 
           {/* Notification */}
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="w-5 h-5 text-gray-700" />
-            <span className="absolute top-1.5 right-1.5 h-2.5 w-2.5 bg-red-500 rounded-full border-2 border-white" />
+            <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-red-500 rounded-full border-2 border-white" />
           </Button>
 
           {/* User Info */}
@@ -88,28 +93,41 @@ export default function Header({
                 e.preventDefault();
                 setIsUserMenuOpen(!isUserMenuOpen);
               }}
-              className="flex items-center  bg-gray-100 rounded-tr-2xl mx-4.5 rounded-br-2xl px-5 py-3 shadow-sm min-w-[200px] border-l border-gray-200 cursor-pointer"
+              className="flex cursor-pointer items-center bg-gray-100 rounded-2xl px-3 sm:px-5 py-2 shadow-sm border border-gray-200 min-w-0 max-w-full"
             >
-              <div className="h-10 w-10 rounded-full flex items-center justify-center overflow-hidden">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full flex items-center justify-center overflow-hidden">
                 {avatarUrl ? (
                   <img
                     src={avatarUrl}
                     alt={userName}
-                    className="h-10 w-10 rounded-full object-cover"
+                    className="h-full w-full object-cover rounded-full"
                   />
                 ) : (
-                  <div className="h-10 w-10 rounded-full bg-purple-200 flex items-center justify-center">
-                    <User2 className="w-6 h-6 text-purple-600" />
+                  <div className="h-full w-full rounded-full bg-purple-200 flex items-center justify-center">
+                    <User2 className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
                   </div>
                 )}
               </div>
-              <div className="flex flex-col ml-2">
-                <span className="text-sm font-medium text-gray-800">
+
+              
+              <div className="hidden sm:flex flex-col ml-2 truncate">
+                <span className="text-sm font-medium text-gray-800 truncate">
                   Tên: {userName}
                 </span>
+               
               </div>
             </PopoverTrigger>
-            <PopoverContent className={`w-48 p-1 ${dropdownAnimation}`} align="end">
+
+            {/* Dropdown menu */}
+            <PopoverContent className={`w-52 p-2 ${dropdownAnimation}`} align="end">
+              {/* Hiển thị tên và vai trò trong dropdown */}
+              <div className="px-3 pb-2 border-b border-gray-200 mb-2">
+                <div className="font-medium text-sm text-gray-800 truncate">
+                  {userName}
+                </div>
+                <div className="text-xs text-gray-500">{userRole}</div>
+              </div>
+
               <ul className="text-sm">
                 {menuItems.map((item) => (
                   <li key={item.href}>
@@ -118,7 +136,7 @@ export default function Header({
                       className="flex items-center gap-2 rounded px-3 py-2 hover:bg-gray-100"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
-                      <FontAwesomeIcon icon={item.icon} className="w-4 h-4 mr-2" />
+                      <FontAwesomeIcon icon={item.icon} className="w-4 h-4" />
                       {item.label}
                     </Link>
                   </li>
@@ -131,7 +149,7 @@ export default function Header({
                     }}
                     className="flex items-center gap-2 rounded w-full text-left px-3 py-2 hover:bg-gray-100"
                   >
-                    <LogOut className="w-4 h-4 mr-2" /> Đăng xuất
+                    <LogOut className="w-4 h-4" /> Đăng xuất
                   </button>
                 </li>
               </ul>
