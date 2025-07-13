@@ -22,6 +22,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 
 interface HeaderProps {
   userName: string;
@@ -58,11 +59,15 @@ export default function Header({
       <div className="fixed h-16 w-full flex items-center justify-between px-4 sm:px-6 bg-gray-50 border-b border-gray-200 shadow-sm z-50">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 min-w-0">
-          <img
-            src={logoUrl}
-            alt="Logo"
-            className="h-8 w-8 rounded-full bg-white"
-          />
+          {logoUrl && (
+            <Image
+              src={logoUrl}
+              alt="Logo"
+              width={32} 
+              height={32}
+              className="rounded-full bg-white"
+            />
+          )}
           <span className="text-sm sm:text-base font-semibold italic text-gray-800 whitespace-nowrap">
             {siteName}
           </span>
@@ -109,12 +114,12 @@ export default function Header({
                 )}
               </div>
 
-              
+
               <div className="hidden sm:flex flex-col ml-2 truncate">
                 <span className="text-sm font-medium text-gray-800 truncate">
                   Tên: {userName}
                 </span>
-               
+
               </div>
             </PopoverTrigger>
 
